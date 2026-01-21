@@ -68,7 +68,7 @@ update-template *COPIER_OPTIONS:
 _init-all: init-git init-project lint test _docs-build
 
 # set up project (after cloning existing repository)
-init-project: init-env init-pre-commit init-dvc
+init-project: init-env init-pre-commit
 
 # initialise git. can alter REMOTE_REPO argument
 init-git:
