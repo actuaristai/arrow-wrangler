@@ -3,7 +3,7 @@
 
 set shell:= ["pwsh", "-c"]
 
-PROJECT_NAME:= "actuarist-ai"
+PROJECT_NAME:= "arrow-wrangler"
 REMOTE_REPO := "git@github.com:actuaristai/arrow-wrangler.git"
 DESCRIPTION := "Standardise data manipulation with pyarrow datasets"
 
@@ -44,7 +44,7 @@ docs: _docs-build
 
 # Lint using ruff
 lint: 
-	uv run --only-group lint ruff check src/{{PROJECT_NAME}} --fix
+	uv run --only-group lint ruff check src/arrow_wrangler --fix
 	uv run --only-group lint ruff check tests --fix
 
 # test using pytest

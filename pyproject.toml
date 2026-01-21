@@ -3,7 +3,7 @@ requires = [ "hatchling",]
 build-backend = "hatchling.build"
 
 [project]
-name = "actuarist-ai"
+name = "arrow-wranglerS"
 version = "0.1.0"
 description = "Standardise data manipulation with pyarrow datasets"
 readme = "README.md"
@@ -39,7 +39,7 @@ dev = [ "ipykernel", "nbclient", "nbformat", "ruff", "autopep8", "commitizen", "
 default-groups = "all"
 
 [tool.ruff]
-src = [ "src/actuarist-ai", "tests", "conf",]
+src = [ "src/arrow_wrangler", "tests", "conf",]
 line-length = 120
 exclude = [ ".git", ".ruff_cache", ".venv", "__pypackages__", "__init__.py",]
 
@@ -57,5 +57,5 @@ convention = "google"
 inline-quotes = "single"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/actuarist-ai", "conf"]
+packages = ["src/arrow_wrangler", "conf"]
 
