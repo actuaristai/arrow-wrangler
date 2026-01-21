@@ -3,7 +3,7 @@
 
 set shell:= ["pwsh", "-c"]
 
-PROJECT_NAME:= "actuarist-ai"
+PROJECT_NAME:= "arrow-wrangler"
 REMOTE_REPO := "git@github.com:actuaristai/arrow-wrangler.git"
 DESCRIPTION := "Standardise data manipulation with pyarrow datasets"
 
@@ -19,10 +19,9 @@ POWERSHELL_SHEBANG := if os() == 'windows' {
 ### start with these commands
 # just (will list out all the available just commands)
 # just init-git (Only need to do once)
-# just init-project (init-env, init-pre-commit, init-dvc)
+# just init-project (init-env, init-pre-commit)
 # just lint (ruff)
 # just test (pytest)
-# just run (dvc repro)
 # just docs (quarto)
 
 
@@ -44,18 +43,13 @@ docs: _docs-build
 
 # Lint using ruff
 lint: 
-	uv run --only-group lint ruff check src/{{PROJECT_NAME}} --fix
+	uv run --only-group lint ruff check src/arrow_wrangler --fix
 	uv run --only-group lint ruff check tests --fix
 
 # test using pytest
 test:
 	uv run --only-group test pytest --cov-report term-missing --cov={{PROJECT_NAME}} -v -p no:faulthandler -W ignore::DeprecationWarning --verbose --doctest-modules
 	uv run --only-group test pytest --cov-report term-missing --cov=tests -v -p no:faulthandler -W ignore::DeprecationWarning --verbose --doctest-modules
-
-# reproduce dvc pipeline
-run:
-	uv run dvc repro
-	# uv run dvc push
 
 # update template using copier. optional: use other copier options like vcs-ref=branch 
 update-template *COPIER_OPTIONS:
@@ -69,7 +63,7 @@ update-template *COPIER_OPTIONS:
 _init-all: init-git init-project lint test _docs-build
 
 # set up project (after cloning existing repository)
-init-project: init-env init-pre-commit init-dvc
+init-project: init-env init-pre-commit
 
 # initialise git. can alter REMOTE_REPO argument
 init-git:
@@ -81,7 +75,7 @@ init-git:
 init-git-push:
 	gh repo create {{PROJECT_NAME}} --public --homepage https://actuaristai.github.io/{{PROJECT_NAME}} --description "{{DESCRIPTION}}"
 	git add .
-	git commit -m 'feat: add dvc and qmd initialisations'
+	git commit -m 'feat: add initialisations'
 	git push -u origin develop
 	git checkout -b main
 	git push -u origin main
@@ -96,19 +90,6 @@ init-pre-commit:
 	uvx pre-commit install --hook-type pre-commit --hook-type commit-msg
 	uvx pre-commit autoupdate
 	uvx pre-commit run --all-files
-
-# set up dvc
-init-dvc:
-	uv run dvc init
-	@echo "To setup dvc remote, enter DVC_SECRET in environment or .secrets.toml and run: just init-dvc-remote"
-
-
-# set up dvc remote. ensure DVC_SECRET is in environment or in .secrets.toml file
-init-dvc-remote DVC_REMOTE_NAME DVC_REMOTE DVC_SECRET:
-	#!{{POWERSHELL_SHEBANG}}
-	echo "initializing dvc into {{DVC_REMOTE}}"
-	uv run dvc remote add -d {{DVC_REMOTE_NAME}} --local {{DVC_REMOTE}}
-	uv run dvc remote modify {{DVC_REMOTE_NAME}} --local connection_string '{{DVC_SECRET}}'
 
 # Initialise blank gh-pages branch for publishing
 init-gh-pages:
@@ -155,14 +136,6 @@ clean:
 	Remove-Item -Path "__pycache__" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Remove-Item -Path ".quarto" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Get-ChildItem -Path . -Filter "__pycache__" -Recurse -Directory | Remove-Item -Recurse -Force
-
-# dvc pull
-dvc-pull:
-	uv run dvc-pull
-
-# dvc add using import-url so that we have metadata on original source going to data/01_raw folder. Usage: just dvc-add NEWFILE='remote.source.link'
-dvc-add NEWFILE:
-	uv run dvc import-url {{NEWFILE}} data/01_raw 
 
 
 

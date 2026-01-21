@@ -6,4 +6,4 @@ Functions to inspect docstrings.
 
 | | |
 | --- | --- |
-| [hello](hello.qmd#actuarist-ai.hello) | Start here for scripts. |
+| [hello](hello.qmd#arrow_wrangler.hello) | Start here for scripts. |

@@ -3,7 +3,7 @@ requires = [ "hatchling",]
 build-backend = "hatchling.build"
 
 [project]
-name = "actuarist-ai"
+name = "arrow-wranglerS"
 version = "0.1.0"
 description = "Standardise data manipulation with pyarrow datasets"
 readme = "README.md"
@@ -22,8 +22,6 @@ dependencies = [
     "typer>=0.15.2",
     "autopep8>=2.3.2",
     "commitizen>=4.4.1",
-     "dvc>=3.59.1",
-
 ]
 
 [[project.authors]]
@@ -33,13 +31,13 @@ email = ""
 [dependency-groups]
 lint = [ "ruff",]
 test = [ "pytest", "pytest-cov", "dynaconf", "typer", "requests", "loguru", "toml",]
-dev = [ "ipykernel", "nbclient", "nbformat", "ruff", "autopep8", "commitizen", "dvc", "pytest", "pytest-cov", "quartodoc", "toml", "typer",]
+dev = [ "ipykernel", "nbclient", "nbformat", "ruff", "autopep8", "commitizen", "pytest", "pytest-cov", "quartodoc", "toml", "typer",]
 
 [tool.uv]
 default-groups = "all"
 
 [tool.ruff]
-src = [ "src/actuarist-ai", "tests", "conf",]
+src = [ "src/arrow_wrangler", "tests", "conf",]
 line-length = 120
 exclude = [ ".git", ".ruff_cache", ".venv", "__pypackages__", "__init__.py",]
 
@@ -57,5 +55,5 @@ convention = "google"
 inline-quotes = "single"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/actuarist-ai", "conf"]
+packages = ["src/arrow_wrangler", "conf"]
 
