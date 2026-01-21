@@ -1,0 +1,8 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 1.4.1
+_src_path: git@github.com:actuaristai/template.git
+email: ''
+full_name: William Lee
+project_name: actuarist-ai
+project_short_description: Standardise data manipulation with pyarrow datasets
+remote_repository: git@github.com:actuaristai/arrow-wrangler.git

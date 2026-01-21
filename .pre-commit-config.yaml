@@ -1,0 +1,29 @@
+repos:
+  - repo: local
+    hooks:
+      - id: commitizen-local
+        name: commitizen-local
+        entry: uv run cz check
+        args: [--commit-msg-file]
+        language: python
+        stages: [commit-msg]
+  - repo: local
+    hooks:
+      - id: autopep8-local
+        name: autopep8-local
+        entry: uv run autopep8
+        language: python
+        args: [--in-place, --aggressive]
+        types: [python]
+        pass_filenames: true
+  - repo: local
+    hooks:
+      - id: ruff-local
+        name: ruff-local
+        entry: uv run ruff check
+        language: python
+        args: [ --fix, --exit-non-zero-on-fix ]
+        types: [python]
+        stages: [pre-commit]
+        pass_filenames: true
+        exclude: "__init__.py"
