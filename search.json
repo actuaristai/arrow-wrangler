@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "Functions to inspect docstrings.\n\n\n\nhello\nStart here for scripts.",
+    "crumbs": [
+      "Reference API",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#api-reference",
+    "href": "reference/index.html#api-reference",
+    "title": "Function reference",
+    "section": "",
+    "text": "Functions to inspect docstrings.\n\n\n\nhello\nStart here for scripts.",
+    "crumbs": [
+      "Reference API",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "docs/data_product.html",
+    "href": "docs/data_product.html",
+    "title": "actuarist-ai",
+    "section": "",
+    "text": "This document summarises the actuarist-ai …\nStandardise data manipulation with pyarrow datasets\n\n\n\nRepository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
+  },
+  {
+    "objectID": "docs/data_product.html#key-info",
+    "href": "docs/data_product.html#key-info",
+    "title": "actuarist-ai",
+    "section": "",
+    "text": "Repository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
+  },
+  {
+    "objectID": "reference/hello.html",
+    "href": "reference/hello.html",
+    "title": "hello",
+    "section": "",
+    "text": "hello\nStart here for scripts.\n\n\n\n\n\nName\nDescription\n\n\n\n\nadd_numbers\nAdd two numbers.\n\n\n\n\n\nhello.add_numbers(first_num, second_num)\nAdd two numbers.\nArgs: first_num (int): first number to add second_num (int): second number to add\nReturns: int: sum of two numbers\nExamples: &gt;&gt;&gt; add_numbers(1, 2) 3",
+    "crumbs": [
+      "Reference API",
+      "API reference",
+      "hello"
+    ]
+  },
+  {
+    "objectID": "reference/hello.html#functions",
+    "href": "reference/hello.html#functions",
+    "title": "hello",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nadd_numbers\nAdd two numbers.\n\n\n\n\n\nhello.add_numbers(first_num, second_num)\nAdd two numbers.\nArgs: first_num (int): first number to add second_num (int): second number to add\nReturns: int: sum of two numbers\nExamples: &gt;&gt;&gt; add_numbers(1, 2) 3",
+    "crumbs": [
+      "Reference API",
+      "API reference",
+      "hello"
+    ]
+  }
+]
