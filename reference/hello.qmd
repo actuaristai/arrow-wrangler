@@ -1,0 +1,30 @@
+# hello { #actuarist-ai.hello }
+
+`hello`
+
+Start here for scripts.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [add_numbers](#actuarist-ai.hello.add_numbers) | Add two numbers. |
+
+### add_numbers { #actuarist-ai.hello.add_numbers }
+
+```python
+hello.add_numbers(first_num, second_num)
+```
+
+Add two numbers.
+
+Args:
+    first_num (int): first number to add
+    second_num (int): second number to add
+
+Returns:
+    int: sum of two numbers
+
+Examples:
+    >>> add_numbers(1, 2)
+    3

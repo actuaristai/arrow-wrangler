@@ -1,0 +1,9 @@
+# Function reference {.doc .doc-index}
+
+## API reference
+
+Functions to inspect docstrings.
+
+| | |
+| --- | --- |
+| [hello](hello.qmd#actuarist-ai.hello) | Start here for scripts. |

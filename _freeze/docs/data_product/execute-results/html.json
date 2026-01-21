@@ -1,0 +1,12 @@
+{
+  "hash": "988f0ad5a49476d4562ba84d56d7ac19",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"actuarist-ai\"\nformat: \n    html:\n        number-sections: true\n        html-table-processing: none\njupyter: actuarist-ai # uv run python -m ipykernel install --user --name actuarist-ai\necho: false\nexecute:\n  freeze: auto  # re-render only when source changes\n---\n\n# Executive Summary\n\nThis document summarises the actuarist-ai ...\n\nStandardise data manipulation with pyarrow datasets\n\n## Key info\n\n-   Repository name: actuarist-ai\n-   Author: William Lee\n-   Repository location: git@github.com:actuaristai/arrow-wrangler.git\n\n",
+    "supporting": [
+      "data_product_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

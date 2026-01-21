@@ -1,0 +1,9 @@
+website:
+  sidebar:
+  - contents:
+    - reference/index.qmd
+    - contents:
+      - reference/hello.qmd
+      section: API reference
+    id: reference
+  - id: dummy-sidebar
