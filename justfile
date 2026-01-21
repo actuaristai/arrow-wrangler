@@ -19,7 +19,7 @@ POWERSHELL_SHEBANG := if os() == 'windows' {
 ### start with these commands
 # just (will list out all the available just commands)
 # just init-git (Only need to do once)
-# just init-project (init-env, init-pre-commit, init-dvc)
+# just init-project (init-env, init-pre-commit)
 # just lint (ruff)
 # just test (pytest)
 # just docs (quarto)
@@ -51,11 +51,6 @@ test:
 	uv run --only-group test pytest --cov-report term-missing --cov={{PROJECT_NAME}} -v -p no:faulthandler -W ignore::DeprecationWarning --verbose --doctest-modules
 	uv run --only-group test pytest --cov-report term-missing --cov=tests -v -p no:faulthandler -W ignore::DeprecationWarning --verbose --doctest-modules
 
-# reproduce dvc pipeline
-run:
-	uv run dvc repro
-	# uv run dvc push
-
 # update template using copier. optional: use other copier options like vcs-ref=branch 
 update-template *COPIER_OPTIONS:
 	uvx copier update --trust --skip-tasks --skip-answered
@@ -80,7 +75,7 @@ init-git:
 init-git-push:
 	gh repo create {{PROJECT_NAME}} --public --homepage https://actuaristai.github.io/{{PROJECT_NAME}} --description "{{DESCRIPTION}}"
 	git add .
-	git commit -m 'feat: add dvc and qmd initialisations'
+	git commit -m 'feat: add initialisations'
 	git push -u origin develop
 	git checkout -b main
 	git push -u origin main
