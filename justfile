@@ -22,7 +22,6 @@ POWERSHELL_SHEBANG := if os() == 'windows' {
 # just init-project (init-env, init-pre-commit, init-dvc)
 # just lint (ruff)
 # just test (pytest)
-# just run (dvc repro)
 # just docs (quarto)
 
 
@@ -97,19 +96,6 @@ init-pre-commit:
 	uvx pre-commit autoupdate
 	uvx pre-commit run --all-files
 
-# set up dvc
-init-dvc:
-	uv run dvc init
-	@echo "To setup dvc remote, enter DVC_SECRET in environment or .secrets.toml and run: just init-dvc-remote"
-
-
-# set up dvc remote. ensure DVC_SECRET is in environment or in .secrets.toml file
-init-dvc-remote DVC_REMOTE_NAME DVC_REMOTE DVC_SECRET:
-	#!{{POWERSHELL_SHEBANG}}
-	echo "initializing dvc into {{DVC_REMOTE}}"
-	uv run dvc remote add -d {{DVC_REMOTE_NAME}} --local {{DVC_REMOTE}}
-	uv run dvc remote modify {{DVC_REMOTE_NAME}} --local connection_string '{{DVC_SECRET}}'
-
 # Initialise blank gh-pages branch for publishing
 init-gh-pages:
 	git checkout --orphan gh-pages
@@ -155,14 +141,6 @@ clean:
 	Remove-Item -Path "__pycache__" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Remove-Item -Path ".quarto" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Get-ChildItem -Path . -Filter "__pycache__" -Recurse -Directory | Remove-Item -Recurse -Force
-
-# dvc pull
-dvc-pull:
-	uv run dvc-pull
-
-# dvc add using import-url so that we have metadata on original source going to data/01_raw folder. Usage: just dvc-add NEWFILE='remote.source.link'
-dvc-add NEWFILE:
-	uv run dvc import-url {{NEWFILE}} data/01_raw 
 
 
 
