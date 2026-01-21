@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "docs/data_product.html",
+    "href": "docs/data_product.html",
+    "title": "actuarist-ai",
+    "section": "",
+    "text": "This document summarises the actuarist-ai …\nStandardise data manipulation with pyarrow datasets\n\n\n\nRepository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
+  },
+  {
+    "objectID": "docs/data_product.html#key-info",
+    "href": "docs/data_product.html#key-info",
+    "title": "actuarist-ai",
+    "section": "",
+    "text": "Repository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
+  },
+  {
     "objectID": "reference/index.html",
     "href": "reference/index.html",
     "title": "Function reference",
@@ -20,20 +34,6 @@
       "Reference API",
       "Function reference"
     ]
-  },
-  {
-    "objectID": "docs/data_product.html",
-    "href": "docs/data_product.html",
-    "title": "actuarist-ai",
-    "section": "",
-    "text": "This document summarises the actuarist-ai …\nStandardise data manipulation with pyarrow datasets\n\n\n\nRepository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
-  },
-  {
-    "objectID": "docs/data_product.html#key-info",
-    "href": "docs/data_product.html#key-info",
-    "title": "actuarist-ai",
-    "section": "",
-    "text": "Repository name: actuarist-ai\nAuthor: William Lee\nRepository location: git@github.com:actuaristai/arrow-wrangler.git"
   },
   {
     "objectID": "reference/hello.html",
