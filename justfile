@@ -137,6 +137,7 @@ clean:
 	Remove-Item -Path ".quarto" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Get-ChildItem -Path . -Filter "__pycache__" -Recurse -Directory | Remove-Item -Recurse -Force
 
-build:
+package:
 	uv build
+	uv publish
 
