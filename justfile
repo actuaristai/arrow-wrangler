@@ -110,7 +110,7 @@ cd-publish:
 # release version with tag (only for maintainers with merge permissions). Usage: just cd-release 'yyyy.mm.dd'
 cd-release VERSION:
 	git checkout -b release-{{VERSION}} develop
-	uv run python bump_version.py {{VERSION}}
+	uv version {{VERSION}}
 	uv sync
 	uv run cz changelog --incremental
 	git commit -a -m "chore: Bumped version number to {{VERSION}}"
@@ -137,6 +137,6 @@ clean:
 	Remove-Item -Path ".quarto" -Recurse -Confirm -Erroraction 'silentlycontinue'
 	Get-ChildItem -Path . -Filter "__pycache__" -Recurse -Directory | Remove-Item -Recurse -Force
 
-
-
+build:
+	uv build
 
