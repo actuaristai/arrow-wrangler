@@ -1,0 +1,27 @@
+# excel_helper { #arrow_wrangler.excel_helper }
+
+`excel_helper`
+
+Excel export with metadata.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [export_to_excel](#arrow_wrangler.excel_helper.export_to_excel) | Use xlwings to export and format data with timestamp. |
+
+### export_to_excel { #arrow_wrangler.excel_helper.export_to_excel }
+
+```python
+excel_helper.export_to_excel(df, file_name, sheet_name)
+```
+
+Use xlwings to export and format data with timestamp.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name       | Type         | Description                         | Default    |
+|------------|--------------|-------------------------------------|------------|
+| df         | pd.DataFrame | data to export                      | _required_ |
+| file_name  | str          | filename and path to export         | _required_ |
+| sheet_name | str          | sheet name. also becomes table name | _required_ |

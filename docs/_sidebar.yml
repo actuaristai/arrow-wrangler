@@ -3,7 +3,10 @@ website:
   - contents:
     - reference/index.qmd
     - contents:
-      - reference/hello.qmd
+      - reference/data_manipulation.qmd
+      - reference/data_tools.qmd
+      - reference/data_validation.qmd
+      - reference/excel_helper.qmd
       section: API reference
     id: reference
   - id: dummy-sidebar

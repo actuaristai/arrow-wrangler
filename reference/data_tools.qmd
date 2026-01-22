@@ -1,0 +1,111 @@
+# data_tools { #arrow_wrangler.data_tools }
+
+`data_tools`
+
+Module for data tools.
+
+## Classes
+
+| Name | Description |
+| --- | --- |
+| [DataTools](#arrow_wrangler.data_tools.DataTools) | Custom methods to add helper data and metadata. |
+
+### DataTools { #arrow_wrangler.data_tools.DataTools }
+
+```python
+data_tools.DataTools()
+```
+
+Custom methods to add helper data and metadata.
+
+#### Methods
+
+| Name | Description |
+| --- | --- |
+| [get_all_levels](#arrow_wrangler.data_tools.DataTools.get_all_levels) | Value Counts summary. |
+| [read_big_parquet](#arrow_wrangler.data_tools.DataTools.read_big_parquet) | Read parquet file bigger than memory. |
+| [timing](#arrow_wrangler.data_tools.DataTools.timing) | Use as a decorator to print function name and time runs (s) and shape. |
+
+##### get_all_levels { #arrow_wrangler.data_tools.DataTools.get_all_levels }
+
+```python
+data_tools.DataTools.get_all_levels(data_con)
+```
+
+Value Counts summary.
+
+For all the variables in the DataFrame,
+run value_counts with count and percentages
+and then stack them up into one DataFrame.
+
+###### Parameters {.doc-section .doc-section-parameters}
+
+| Name     | Type   | Description                        | Default    |
+|----------|--------|------------------------------------|------------|
+| data_con | Table  | Table with data to get levels from | _required_ |
+
+###### Returns: {.doc-section .doc-section-returns}
+
+    ibis Table with columns:  level, count, percent, cum_perc,
+                                and column.
+
+###### Examples: {.doc-section .doc-section-examples}
+
+>>> from arrow_wrangler.data_tools import DataTools
+>>> data = {"A": [1, 2, 1, 1, 2, 2],
+...        "B": ["a", "b", "a", "a", "b", "c"]}
+>>> result = (DataTools.get_all_levels(ibis.memtable(data))
+...     .mutate(percent=_['percent'].round(2)))
+>>> result_df = pa.table({"level": ["1", "2", "a", "b", "c"],
+...                          "count": [3, 3, 3, 2, 1],
+...                          "variable": ["A", "A", "B", "B", "B"],
+...                          "percent": [0.5, 0.5, 0.5, 0.33, 0.17]})
+>>> result.to_pyarrow().equals(result_df)
+True
+
+##### read_big_parquet { #arrow_wrangler.data_tools.DataTools.read_big_parquet }
+
+```python
+data_tools.DataTools.read_big_parquet(parquet_location)
+```
+
+Read parquet file bigger than memory.
+
+This is for larger than memory dataset
+Uses arrows dataset object
+Note this is different from the pyarrow table object (as used above as default)
+which is using in-memory, so is faster
+Requires duckdb
+This is a bit slower than the in_memory approach (ibis.read_parquet)
+but scales to larger-than-memory datasets!
+
+###### Parameters {.doc-section .doc-section-parameters}
+
+| Name             | Type   | Description                | Default    |
+|------------------|--------|----------------------------|------------|
+| parquet_location | Path   | path where parquet file is | _required_ |
+
+###### Returns: {.doc-section .doc-section-returns}
+
+Table
+    ibis Table object of parquet file
+
+###### Examples: {.doc-section .doc-section-examples}
+
+```python
+from arrow_wrangler.data_tools import DataTools
+
+MEMBER_DATA = 'data/01_raw/member_data_20221231.parquet'
+
+dt = DataTools()
+big_data = dt.read_big_parquet(parquet_location=MEMBER_DATA)
+big_data
+```
+
+##### timing { #arrow_wrangler.data_tools.DataTools.timing }
+
+```python
+data_tools.DataTools.timing(f)
+```
+
+Use as a decorator to print function name and time runs (s) and shape.
