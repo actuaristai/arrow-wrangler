@@ -21,7 +21,10 @@ quartodoc:
       contents:
         # the functions being documented in the package.
         # you can refer to anything: class methods, modules, etc..
-        - hello
+        - data_manipulation
+        - data_tools
+        - data_validation
+        - excel_helper
 
 website:
   navbar:

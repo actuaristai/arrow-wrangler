@@ -22,6 +22,14 @@ dependencies = [
     "typer>=0.15.2",
     "autopep8>=2.3.2",
     "commitizen>=4.4.1",
+    "pandas>=2.3.3",
+    "xlwings>=0.33.19",
+    "pandera>=0.28.1",
+    "great-tables>=0.20.0",
+    "ibis-framework[duckdb,polars]>=11.0.0",
+    "pins>=0.9.1",
+    "polars>=1.37.1",
+    "orjson>=3.11.5",
 ]
 
 [[project.authors]]

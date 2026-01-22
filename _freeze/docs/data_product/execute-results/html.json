@@ -1,0 +1,12 @@
+{
+  "hash": "5a37784c5538303b64306c250ea04409",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Arrow Wrangler Package\nformat: \n    html:\n        number-sections: true\n        html-table-processing: none\njupyter: arrow-wrangler # uv run python -m ipykernel install --user --name arrow-wrangler\necho: false\nexecute:\n  freeze: auto  # re-render only when source changes\n---\n\n# Executive Summary\n\nArrow Wrangler python package is used to standardise data manipulation with pyarrow datasets\n\n",
+    "supporting": [
+      "data_product_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
