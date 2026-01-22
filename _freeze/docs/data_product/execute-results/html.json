@@ -1,8 +1,8 @@
 {
-  "hash": "988f0ad5a49476d4562ba84d56d7ac19",
+  "hash": "5a37784c5538303b64306c250ea04409",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"actuarist-ai\"\nformat: \n    html:\n        number-sections: true\n        html-table-processing: none\njupyter: actuarist-ai # uv run python -m ipykernel install --user --name actuarist-ai\necho: false\nexecute:\n  freeze: auto  # re-render only when source changes\n---\n\n# Executive Summary\n\nThis document summarises the actuarist-ai ...\n\nStandardise data manipulation with pyarrow datasets\n\n## Key info\n\n-   Repository name: actuarist-ai\n-   Author: William Lee\n-   Repository location: git@github.com:actuaristai/arrow-wrangler.git\n\n",
+    "markdown": "---\ntitle: Arrow Wrangler Package\nformat: \n    html:\n        number-sections: true\n        html-table-processing: none\njupyter: arrow-wrangler # uv run python -m ipykernel install --user --name arrow-wrangler\necho: false\nexecute:\n  freeze: auto  # re-render only when source changes\n---\n\n# Executive Summary\n\nArrow Wrangler python package is used to standardise data manipulation with pyarrow datasets\n\n",
     "supporting": [
       "data_product_files"
     ],

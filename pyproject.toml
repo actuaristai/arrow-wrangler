@@ -3,29 +3,12 @@ requires = [ "hatchling",]
 build-backend = "hatchling.build"
 
 [project]
-name = "actuarist-ai"
-version = "0.1.0"
+name = "arrow-wranglerS"
+version = "1.0.0"
 description = "Standardise data manipulation with pyarrow datasets"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "dynaconf>=3.2.10",
-    "ipykernel>=6.29.5",
-    "loguru>=0.7.3",
-    "pytest>=8.3.5",
-    "pytest-cov>=6.0.0",
-    "ruff>=0.11.2",
-    "nbclient>=0.10.2",
-    "nbformat>=5.10.4",
-    "quartodoc>=0.9.1",
-    "toml>=0.10.2",
-    "typer>=0.15.2",
-    "autopep8>=2.3.2",
-    "commitizen>=4.4.1",
-     "dvc>=3.59.1",
-
-]
-
+dependencies = [ "dynaconf>=3.2.10", "ipykernel>=6.29.5", "loguru>=0.7.3", "pytest>=8.3.5", "pytest-cov>=6.0.0", "ruff>=0.11.2", "nbclient>=0.10.2", "nbformat>=5.10.4", "quartodoc>=0.9.1", "toml>=0.10.2", "typer>=0.15.2", "autopep8>=2.3.2", "commitizen>=4.4.1", "pandas>=2.3.3", "xlwings>=0.33.19", "pandera>=0.28.1", "great-tables>=0.20.0", "ibis-framework[duckdb,polars]>=11.0.0", "pins>=0.9.1", "polars>=1.37.1", "orjson>=3.11.5",]
 [[project.authors]]
 name = "William Lee"
 email = ""
@@ -33,13 +16,13 @@ email = ""
 [dependency-groups]
 lint = [ "ruff",]
 test = [ "pytest", "pytest-cov", "dynaconf", "typer", "requests", "loguru", "toml",]
-dev = [ "ipykernel", "nbclient", "nbformat", "ruff", "autopep8", "commitizen", "dvc", "pytest", "pytest-cov", "quartodoc", "toml", "typer",]
+dev = [ "ipykernel", "nbclient", "nbformat", "ruff", "autopep8", "commitizen", "pytest", "pytest-cov", "quartodoc", "toml", "typer",]
 
 [tool.uv]
 default-groups = "all"
 
 [tool.ruff]
-src = [ "src/actuarist-ai", "tests", "conf",]
+src = [ "src/arrow_wrangler", "tests", "conf",]
 line-length = 120
 exclude = [ ".git", ".ruff_cache", ".venv", "__pypackages__", "__init__.py",]
 
@@ -48,7 +31,7 @@ max_line_length = 120
 
 [tool.ruff.lint]
 select = [ "ALL",]
-ignore = [ ]
+ignore = []
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -57,5 +40,4 @@ convention = "google"
 inline-quotes = "single"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/actuarist-ai", "conf"]
-
+packages = [ "src/arrow_wrangler", "conf",]

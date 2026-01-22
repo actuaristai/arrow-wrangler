@@ -10,7 +10,7 @@ metadata-files:
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
-  package: actuarist-ai
+  package: arrow_wrangler
 
   # write sidebar data to this file
   sidebar: docs/_sidebar.yml
@@ -21,7 +21,10 @@ quartodoc:
       contents:
         # the functions being documented in the package.
         # you can refer to anything: class methods, modules, etc..
-        - hello
+        - data_manipulation
+        - data_tools
+        - data_validation
+        - excel_helper
 
 website:
   navbar:

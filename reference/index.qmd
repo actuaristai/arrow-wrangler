@@ -6,4 +6,7 @@ Functions to inspect docstrings.
 
 | | |
 | --- | --- |
-| [hello](hello.qmd#actuarist-ai.hello) | Start here for scripts. |
+| [data_manipulation](data_manipulation.qmd#arrow_wrangler.data_manipulation) | Pins functions and ArrowWrangler class for helping with arrow data manipulations. |
+| [data_tools](data_tools.qmd#arrow_wrangler.data_tools) | Module for data tools. |
+| [data_validation](data_validation.qmd#arrow_wrangler.data_validation) | Define models for data validation. |
+| [excel_helper](excel_helper.qmd#arrow_wrangler.excel_helper) | Excel export with metadata. |
