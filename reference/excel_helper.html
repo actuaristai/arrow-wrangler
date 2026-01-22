@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hello</title>
+<title>excel_helper</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hello.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/hello.html">hello</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/data_manipulation.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/excel_helper.html">excel_helper</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -168,8 +168,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/hello.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">hello</span></a>
+  <a href="../reference/data_manipulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">data_manipulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/data_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">data_tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/data_validation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">data_validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/excel_helper.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">excel_helper</span></a>
   </div>
 </li>
       </ul>
@@ -181,15 +199,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hello.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/hello.html">hello</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/data_manipulation.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/excel_helper.html">excel_helper</a></li></ol></nav></header>
 
 
 
 
-<section id="arrow_wrangler.hello" class="level1">
-<h1>hello</h1>
-<p><code>hello</code></p>
-<p>Start here for scripts.</p>
+<section id="arrow_wrangler.excel_helper" class="level1">
+<h1>excel_helper</h1>
+<p><code>excel_helper</code></p>
+<p>Excel export with metadata.</p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -201,20 +219,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#arrow_wrangler.hello.add_numbers">add_numbers</a></td>
-<td>Add two numbers.</td>
+<td><a href="#arrow_wrangler.excel_helper.export_to_excel">export_to_excel</a></td>
+<td>Use xlwings to export and format data with timestamp.</td>
 </tr>
 </tbody>
 </table>
-<section id="arrow_wrangler.hello.add_numbers" class="level3">
-<h3 class="anchored" data-anchor-id="arrow_wrangler.hello.add_numbers">add_numbers</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hello.add_numbers(first_num, second_num)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add two numbers.</p>
-<p>Args: first_num (int): first number to add second_num (int): second number to add</p>
-<p>Returns: int: sum of two numbers</p>
-<p>Examples: &gt;&gt;&gt; add_numbers(1, 2) 3</p>
+<section id="arrow_wrangler.excel_helper.export_to_excel" class="level3">
+<h3 class="anchored" data-anchor-id="arrow_wrangler.excel_helper.export_to_excel">export_to_excel</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>excel_helper.export_to_excel(df, file_name, sheet_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use xlwings to export and format data with timestamp.</p>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 18%">
+<col style="width: 49%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>df</td>
+<td>pd.DataFrame</td>
+<td>data to export</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>file_name</td>
+<td>str</td>
+<td>filename and path to export</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>sheet_name</td>
+<td>str</td>
+<td>sheet name. also becomes table name</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </section>
 </section>

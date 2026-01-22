@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>data_tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -104,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">Function reference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/data_manipulation.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/data_tools.html">data_tools</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -118,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function reference</span></a>
   </div>
 </li>
@@ -139,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/data_tools.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/data_tools.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">data_tools</span></a>
   </div>
 </li>
@@ -164,38 +199,151 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/data_manipulation.html">API reference</a></li><li class="breadcrumb-item"><a href="../reference/data_tools.html">data_tools</a></li></ol></nav></header>
 
 
 
 
-<section id="function-reference" class="level1 doc doc-index">
-<h1 class="doc doc-index">Function reference</h1>
-<section id="api-reference" class="level2">
-<h2 class="anchored" data-anchor-id="api-reference">API reference</h2>
-<p>Functions to inspect docstrings.</p>
+<section id="arrow_wrangler.data_tools" class="level1">
+<h1>data_tools</h1>
+<p><code>data_tools</code></p>
+<p>Module for data tools.</p>
+<section id="classes" class="level2">
+<h2 class="anchored" data-anchor-id="classes">Classes</h2>
 <table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><a href="../reference/data_manipulation.html#arrow_wrangler.data_manipulation">data_manipulation</a></td>
-<td>Pins functions and ArrowWrangler class for helping with arrow data manipulations.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/data_tools.html#arrow_wrangler.data_tools">data_tools</a></td>
-<td>Module for data tools.</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/data_validation.html#arrow_wrangler.data_validation">data_validation</a></td>
-<td>Define models for data validation.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/excel_helper.html#arrow_wrangler.excel_helper">excel_helper</a></td>
-<td>Excel export with metadata.</td>
+<td><a href="#arrow_wrangler.data_tools.DataTools">DataTools</a></td>
+<td>Custom methods to add helper data and metadata.</td>
 </tr>
 </tbody>
 </table>
+<section id="arrow_wrangler.data_tools.DataTools" class="level3">
+<h3 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools">DataTools</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Custom methods to add helper data and metadata.</p>
+<section id="methods" class="level4">
+<h4 class="anchored" data-anchor-id="methods">Methods</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#arrow_wrangler.data_tools.DataTools.get_all_levels">get_all_levels</a></td>
+<td>Value Counts summary.</td>
+</tr>
+<tr class="even">
+<td><a href="#arrow_wrangler.data_tools.DataTools.read_big_parquet">read_big_parquet</a></td>
+<td>Read parquet file bigger than memory.</td>
+</tr>
+<tr class="odd">
+<td><a href="#arrow_wrangler.data_tools.DataTools.timing">timing</a></td>
+<td>Use as a decorator to print function name and time runs (s) and shape.</td>
+</tr>
+</tbody>
+</table>
+<section id="arrow_wrangler.data_tools.DataTools.get_all_levels" class="level5">
+<h5 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools.get_all_levels">get_all_levels</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.get_all_levels(data_con)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Value Counts summary.</p>
+<p>For all the variables in the DataFrame, run value_counts with count and percentages and then stack them up into one DataFrame.</p>
+<section id="parameters" class="level6 doc-section doc-section-parameters">
+<h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h6>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data_con</td>
+<td>Table</td>
+<td>Table with data to get levels from</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level6 doc-section doc-section-returns">
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns:</h6>
+<pre><code>ibis Table with columns:  level, count, percent, cum_perc,
+                            and column.</code></pre>
+</section>
+<section id="examples" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples:</h6>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>from arrow_wrangler.data_tools import DataTools data = {“A”: [1, 2, 1, 1, 2, 2], … “B”: [“a”, “b”, “a”, “a”, “b”, “c”]} result = (DataTools.get_all_levels(ibis.memtable(data)) … .mutate(percent=_[‘percent’].round(2))) result_df = pa.table({“level”: [“1”, “2”, “a”, “b”, “c”], … “count”: [3, 3, 3, 2, 1], … “variable”: [“A”, “A”, “B”, “B”, “B”], … “percent”: [0.5, 0.5, 0.5, 0.33, 0.17]}) result.to_pyarrow().equals(result_df) True</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
+</section>
+<section id="arrow_wrangler.data_tools.DataTools.read_big_parquet" class="level5">
+<h5 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools.read_big_parquet">read_big_parquet</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.read_big_parquet(parquet_location)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read parquet file bigger than memory.</p>
+<p>This is for larger than memory dataset Uses arrows dataset object Note this is different from the pyarrow table object (as used above as default) which is using in-memory, so is faster Requires duckdb This is a bit slower than the in_memory approach (ibis.read_parquet) but scales to larger-than-memory datasets!</p>
+<section id="parameters-1" class="level6 doc-section doc-section-parameters">
+<h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h6>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>parquet_location</td>
+<td>Path</td>
+<td>path where parquet file is</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level6 doc-section doc-section-returns">
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns:</h6>
+<p>Table ibis Table object of parquet file</p>
+</section>
+<section id="examples-1" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-1">Examples:</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arrow_wrangler.data_tools <span class="im">import</span> DataTools</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>MEMBER_DATA <span class="op">=</span> <span class="st">'data/01_raw/member_data_20221231.parquet'</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DataTools()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>big_data <span class="op">=</span> dt.read_big_parquet(parquet_location<span class="op">=</span>MEMBER_DATA)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>big_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="arrow_wrangler.data_tools.DataTools.timing" class="level5">
+<h5 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools.timing">timing</h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.timing(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use as a decorator to print function name and time runs (s) and shape.</p>
 
 
+</section>
+</section>
+</section>
 </section>
 </section>
 
