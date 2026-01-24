@@ -18,10 +18,7 @@ excel_helper.export_to_excel(df, file_name, sheet_name)
 
 Use xlwings to export and format data with timestamp.
 
-#### Parameters {.doc-section .doc-section-parameters}
-
-| Name       | Type         | Description                         | Default    |
-|------------|--------------|-------------------------------------|------------|
-| df         | pd.DataFrame | data to export                      | _required_ |
-| file_name  | str          | filename and path to export         | _required_ |
-| sheet_name | str          | sheet name. also becomes table name | _required_ |
+Args:
+    df (pd.DataFrame): Data to export.
+    file_name (str): Filename and path to export.
+    sheet_name (str): Sheet name, also becomes table name.

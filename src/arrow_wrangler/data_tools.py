@@ -23,33 +23,27 @@ class DataTools:
     def get_all_levels(data_con: Table) -> Table:
         """Value Counts summary.
 
-        For all the variables in the DataFrame,
-        run value_counts with count and percentages
-        and then stack them up into one DataFrame.
+        For all the variables in the DataFrame, run value_counts with count and
+        percentages and then stack them up into one DataFrame.
 
-        Parameters
-        ----------
-        data_con : Table
-            Table with data to get levels from
+        Args:
+            data_con (Table): Table with data to get levels from.
 
         Returns:
-        -------
-            ibis Table with columns:  level, count, percent, cum_perc,
-                                        and column.
+            Table: Ibis Table with columns: level, count, percent, cum_perc, and column.
 
         Examples:
-        --------
-        >>> from arrow_wrangler.data_tools import DataTools
-        >>> data = {"A": [1, 2, 1, 1, 2, 2],
-        ...        "B": ["a", "b", "a", "a", "b", "c"]}
-        >>> result = (DataTools.get_all_levels(ibis.memtable(data))
-        ...     .mutate(percent=_['percent'].round(2)))
-        >>> result_df = pa.table({"level": ["1", "2", "a", "b", "c"],
-        ...                          "count": [3, 3, 3, 2, 1],
-        ...                          "variable": ["A", "A", "B", "B", "B"],
-        ...                          "percent": [0.5, 0.5, 0.5, 0.33, 0.17]})
-        >>> result.to_pyarrow().equals(result_df)
-        True
+            >>> from arrow_wrangler.data_tools import DataTools
+            >>> data = {"A": [1, 2, 1, 1, 2, 2],
+            ...        "B": ["a", "b", "a", "a", "b", "c"]}
+            >>> result = (DataTools.get_all_levels(ibis.memtable(data))
+            ...     .mutate(percent=_['percent'].round(2)))
+            >>> result_df = pa.table({"level": ["1", "2", "a", "b", "c"],
+            ...                          "count": [3, 3, 3, 2, 1],
+            ...                          "variable": ["A", "A", "B", "B", "B"],
+            ...                          "percent": [0.5, 0.5, 0.5, 0.33, 0.17]})
+            >>> result.to_pyarrow().equals(result_df)
+            True
         """
         columns = data_con.columns
         cum_count_freq = None
@@ -70,43 +64,31 @@ class DataTools:
     def read_big_parquet(parquet_location: Path) -> Table:
         """Read parquet file bigger than memory.
 
-        This is for larger than memory dataset
-        Uses arrows dataset object
+        This is for larger than memory dataset. Uses arrows dataset object.
         Note this is different from the pyarrow table object (as used above as default)
-        which is using in-memory, so is faster
-        Requires duckdb
+        Uses in-memory, so is faster. Requires duckdb.
         This is a bit slower than the in_memory approach (ibis.read_parquet)
         but scales to larger-than-memory datasets!
 
-
-        Parameters
-        ----------
-        parquet_location : Path
-            path where parquet file is
+        Args:
+            parquet_location (Path): Path where parquet file is.
 
         Returns:
-        -------
-        Table
-            ibis Table object of parquet file
-
-        Examples:
-        --------
-        ```python
-        from arrow_wrangler.data_tools import DataTools
-
-        MEMBER_DATA = 'data/01_raw/member_data_20221231.parquet'
-
-        dt = DataTools()
-        big_data = dt.read_big_parquet(parquet_location=MEMBER_DATA)
-        big_data
-        ```
+            Table: Ibis Table object of parquet file.
         """
         duck = ibis.duckdb.connect()
         pyarrow_ds = ds.dataset(parquet_location)
         return duck.register(pyarrow_ds)
 
-    def timing(self: 'DataTools', f: Callable) -> str:
-        """Use as a decorator to print function name and time runs (s) and shape."""
+    def timing(self: 'DataTools', f: Callable) -> Callable:
+        """Use as a decorator to print function name and time runs (s) and shape.
+
+        Args:
+            f (Callable): Function to decorate.
+
+        Returns:
+            Callable: Wrapped function that logs timing and shape information.
+        """
 
         @wraps(f)
         def wrap(*args: str, **kw: str) -> Callable:

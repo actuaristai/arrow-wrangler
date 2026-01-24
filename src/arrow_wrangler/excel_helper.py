@@ -11,14 +11,10 @@ from loguru import logger
 def export_to_excel(df: pd.DataFrame, file_name: str, sheet_name: str) -> None:
     """Use xlwings to export and format data with timestamp.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        data to export
-    file_name : str
-        filename and path to export
-    sheet_name : str
-        sheet name. also becomes table name
+    Args:
+        df (pd.DataFrame): Data to export.
+        file_name (str): Filename and path to export.
+        sheet_name (str): Sheet name, also becomes table name.
     """
     login = os.getlogin()
     user = subprocess.check_output(['whoami', '/fqdn']).strip().decode()  # noqa: S607

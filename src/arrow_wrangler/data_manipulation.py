@@ -21,41 +21,34 @@ ibis.options.interactive = True
 class ArrowWrangler:
     """Data Munger using Arrow datasets.
 
-    Example usage
-    from pins.data import mtcars
-    mtcars_arrow = pa.table(mtcars)
-    c = ArrowWrangler(mtcars_arrow)
-    c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe['x']
-    c.pipe_pandas(lambda d: d.iloc[:, 1:2])
+    Examples:
+        from pins.data import mtcars
+        mtcars_arrow = pa.table(mtcars)
+        c = ArrowWrangler(mtcars_arrow)
+        c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe
+        c.pipe_pandas(lambda d: d.iloc[:, 1:2])
     """
 
     @classmethod
-    def read_from_board(cls: ArrowWrangler, board: pins.boards.BaseBoard, name: str) -> None:
+    def read_from_board(cls: ArrowWrangler, board: pins.boards.BaseBoard, name: str) -> ArrowWrangler | None:
         """Read from board and save it to the object instance's dataframe property.
 
-        Parameters
-        ----------
-        cls : 'ArrowWrangler'
-            class with board and dataframe properties
-        board: pins.boards.BaseBoard
-            pins board to read from
-        name : str
-            label for pin
+        Args:
+            board (pins.boards.BaseBoard): Pins board to read from.
+            name (str): Label for pin.
 
         Returns:
-        -------
-        None
+            ArrowWrangler | None: ArrowWrangler instance with loaded dataframe, or None if pin not found.
 
         Examples:
-        --------
-        >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
-        >>> table = pa.Table.from_pandas(data)
-        >>> aw = ArrowWrangler(table)
-        >>> aw.board = pins.board_temp()
-        >>> _saved = aw.save_arrow_ifnew(name='simple')
-        >>> new = ArrowWrangler.read_from_board(aw.board, 'simple')
-        >>> new.dataframe.equals(pa.Table.from_pydict({'a': [1, 2], 'b': [3, 4]}))
-        True
+            >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
+            >>> table = pa.Table.from_pandas(data)
+            >>> aw = ArrowWrangler(table)
+            >>> aw.board = pins.board_temp()
+            >>> _saved = aw.save_arrow_ifnew(name='simple')
+            >>> new = ArrowWrangler.read_from_board(aw.board, 'simple')
+            >>> new.dataframe.equals(pa.Table.from_pydict({'a': [1, 2], 'b': [3, 4]}))
+            True
         """
         if board.pin_exists(name):
             latest_pin = read_table(board.pin_download(name)[0])
@@ -69,23 +62,17 @@ class ArrowWrangler:
     def read_from_sqlserver(cls: ArrowWrangler,
                             hostname: str,
                             database: str,
-                            filter_condition: str | callable | None = None) -> None:
+                            filter_condition: str | callable | None = None) -> ArrowWrangler:
         """Read from sql server database and initialize new ArrowWrangler object.
 
-        Parameters
-        ----------
-        hostname: string for connecting to mssql
-        cls : ArrowWrangler
-            class with board and dataframe properties
-        database: str: database.schema.table
-            bxs schema and table to read from
-        filter_condition : str | callable
-            either an sql filter condition or function to filter / manipulate using sql before saving arrow
+        Args:
+            hostname (str): String for connecting to mssql.
+            database (str): Database.schema.table string.
+            filter_condition (str | Callable | None, optional): Either an sql filter condition
+                or function to filter/manipulate using sql before saving arrow. Defaults to None.
 
         Returns:
-        -------
-        None
-
+            ArrowWrangler: ArrowWrangler instance with loaded data.
         """
         catalog, db, table_name = str.split(database, '.')
         con = ibis.mssql.connect(host=hostname,
@@ -107,19 +94,10 @@ class ArrowWrangler:
                  board: pins.boards.BaseBoard | None = None) -> None:
         """Initialize class from pyarrow table.
 
-        Parameters
-        ----------
-        self : ArrowWrangler
-
-        start_arrow : pa.Table
-            arrow table to load into object's dataframe property
-
-        board: pins.boards.BaseBoard
-            board to save and read data from
-
-        Returns:
-        -------
-        None
+        Args:
+            start_arrow (pa.Table): Arrow table to load into object's dataframe property.
+            board (pins.boards.BaseBoard or None, optional): Board to save and read data from.
+                Defaults to None, which creates a temporary board.
         """
         self.dataframe = start_arrow
         if board is not None:
@@ -128,18 +106,30 @@ class ArrowWrangler:
             self.board = pins.board_temp()
 
     def __repr__(self: ArrowWrangler) -> str:
-        """Show ibis output with columns and rowcount."""
+        """Show ibis output with columns and rowcount.
+
+        Returns:
+            str: String representation of the dataframe with shape information.
+        """
         shape = self.dataframe.shape
         return f'{ibis.memtable(self.dataframe).__repr__()} \n\n rows: {shape[0]} \n columns: {shape[1]}'
 
     @property
     def board(self: ArrowWrangler) -> pins.boards.BaseBoard:
-        """Set board."""
+        """Get board.
+
+        Returns:
+            The pins board instance.
+        """
         return self._board
 
     @board.setter
     def board(self: ArrowWrangler, board: pins.boards.BaseBoard) -> pins.boards.BaseBoard:
-        """Set for board."""
+        """Set board.
+
+        Args:
+            board: Pins board instance to set.
+        """
         if isinstance(board, pins.boards.BaseBoard):
             self._board = board
         else:
@@ -147,12 +137,20 @@ class ArrowWrangler:
 
     @property
     def dataframe(self: ArrowWrangler) -> pa.Table:
-        """Set dataframe."""
+        """Get dataframe.
+
+        Returns:
+            The pyarrow table instance.
+        """
         return self._dataframe
 
     @dataframe.setter
     def dataframe(self: ArrowWrangler, arrow: pa.Table) -> pa.Table:
-        """Set for dataframe."""
+        """Set dataframe.
+
+        Args:
+            arrow: Pyarrow table to set.
+        """
         if isinstance(arrow, pa.Table):
             self._dataframe = arrow
         else:
@@ -163,36 +161,25 @@ class ArrowWrangler:
                    *args: tuple,
                    other_datasets: list | None = None,
                    **kwargs: dict) -> ArrowWrangler:
-        """Apply a function to the `ArrowWrangler` object in a chain-able manner.
+        """Apply a function to the ArrowWrangler object in a chain-able manner.
 
-        Parameters
-        ----------
-        func : callable
-            function to apply. Function must have input pa.Table and return pa.Table
-        args: tuple
-            arguments that will be passed to the function
-        other_datasets: list
-            list of strings defining the names of data pins to read from the board.
-            If this is used, the name of the string needs to be the name of the parameter that the function is passed
-            to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets
-            def pass_functions(initial_tbl: pa.Table, year: int, cobe: pa.Table, bp: pa.Table):
-                return initial_tbl
-        kwargs: dict
-            keyword-arguments that will be passed to the function
-
+        Args:
+            func: Function to apply. Must have input pa.Table and return pa.Table.
+            *args: Arguments that will be passed to the function.
+            other_datasets: List of strings defining the names of data pins to read.
+                The string names must match the function parameter names.
+            **kwargs: Keyword-arguments that will be passed to the function.
 
         Returns:
-        -------
-        'ArrowWrangler' (with updated dataframe property)
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> from pins.data import mtcars
-        >>> mtcars_arrow = pa.table(mtcars)
-        >>> c = ArrowWrangler(mtcars_arrow)
-        >>> mpg_cyl = c.pipe_arrow(lambda d: d.select(['cyl', 'mpg']))
-        >>> mpg_cyl.dataframe.shape
-        (32, 2)
+            >>> from pins.data import mtcars
+            >>> mtcars_arrow = pa.table(mtcars)
+            >>> c = ArrowWrangler(mtcars_arrow)
+            >>> mpg_cyl = c.pipe_arrow(lambda d: d.select(['cyl', 'mpg']))
+            >>> mpg_cyl.dataframe.shape
+            (32, 2)
         """
         time_start = time()
 
