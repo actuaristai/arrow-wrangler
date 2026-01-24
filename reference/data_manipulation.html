@@ -228,7 +228,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler">ArrowWrangler</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler(start_arrow, board<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Data Munger using Arrow datasets.</p>
-<p>Example usage from pins.data import mtcars mtcars_arrow = pa.table(mtcars) c = ArrowWrangler(mtcars_arrow) c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe[‘x’] c.pipe_pandas(lambda d: d.iloc[:, 1:2])</p>
+<section id="examples" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pins.data <span class="im">import</span> mtcars</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mtcars_arrow <span class="op">=</span> pa.table(mtcars)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c <span class="op">=</span> ArrowWrangler(mtcars_arrow)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c.pipe_ibis(<span class="kw">lambda</span> d: d.mutate(x<span class="op">=</span><span class="dv">1</span>)).dataframe</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c.pipe_pandas(<span class="kw">lambda</span> d: d.iloc[:, <span class="dv">1</span>:<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="attributes" class="level4">
 <h4 class="anchored" data-anchor-id="attributes">Attributes</h4>
 <table class="caption-top table">
@@ -241,11 +248,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><a href="#arrow_wrangler.data_manipulation.ArrowWrangler.board">board</a></td>
-<td>Set board.</td>
+<td>Get board.</td>
 </tr>
 <tr class="even">
 <td><a href="#arrow_wrangler.data_manipulation.ArrowWrangler.dataframe">dataframe</a></td>
-<td>Set dataframe.</td>
+<td>Get dataframe.</td>
 </tr>
 </tbody>
 </table>
@@ -262,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><a href="#arrow_wrangler.data_manipulation.ArrowWrangler.pipe_arrow">pipe_arrow</a></td>
-<td>Apply a function to the <code>ArrowWrangler</code> object in a chain-able manner.</td>
+<td>Apply a function to the ArrowWrangler object in a chain-able manner.</td>
 </tr>
 <tr class="even">
 <td><a href="#arrow_wrangler.data_manipulation.ArrowWrangler.pipe_ibis">pipe_ibis</a></td>
@@ -296,21 +303,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_arrow" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_arrow">pipe_arrow</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_arrow(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Apply a function to the <code>ArrowWrangler</code> object in a chain-able manner.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_arrow(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Apply a function to the ArrowWrangler object in a chain-able manner.</p>
 <section id="parameters" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h6>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 90%">
-<col style="width: 2%">
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 73%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -324,53 +331,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>func</td>
 <td>callable</td>
-<td>function to apply. Function must have input pa.Table and return pa.Table</td>
+<td>Function to apply. Must have input pa.Table and return pa.Table.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>args</td>
+<td>*args</td>
 <td>tuple</td>
-<td>arguments that will be passed to the function</td>
+<td>Arguments that will be passed to the function.</td>
 <td><code>()</code></td>
 </tr>
 <tr class="odd">
 <td>other_datasets</td>
 <td>list | None</td>
-<td>list of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=[‘cobe’, ‘bp’], then this needs to be the other datasets def pass_functions(initial_tbl: pa.Table, year: int, cobe: pa.Table, bp: pa.Table): return initial_tbl</td>
+<td>List of strings defining the names of data pins to read. The string names must match the function parameter names.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
-<td>kwargs</td>
+<td>**kwargs</td>
 <td>dict</td>
-<td>keyword-arguments that will be passed to the function</td>
+<td>Keyword-arguments that will be passed to the function.</td>
 <td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns:</h6>
-<p>‘ArrowWrangler’ (with updated dataframe property)</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>ArrowWrangler</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>from pins.data import mtcars mtcars_arrow = pa.table(mtcars) c = ArrowWrangler(mtcars_arrow) mpg_cyl = c.pipe_arrow(lambda d: d.select([‘cyl’, ‘mpg’])) mpg_cyl.dataframe.shape (32, 2)</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-1" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-1">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pins.data <span class="im">import</span> mtcars</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mtcars_arrow <span class="op">=</span> pa.table(mtcars)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c <span class="op">=</span> ArrowWrangler(mtcars_arrow)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mpg_cyl <span class="op">=</span> c.pipe_arrow(<span class="kw">lambda</span> d: d.select([<span class="st">'cyl'</span>, <span class="st">'mpg'</span>]))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mpg_cyl.dataframe.shape</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>(<span class="dv">32</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_ibis" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_ibis">pipe_ibis</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_ibis(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_ibis(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Apply formula taking input ibis table and output ibis table.</p>
 <p>Automatically convert from pyararow before function, and back to pyarrow after function.</p>
 <section id="parameters-1" class="level6 doc-section doc-section-parameters">
@@ -394,53 +420,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>func</td>
 <td>callable</td>
-<td>function to apply. Function must have input ibis.memtable and return ibis.memtable</td>
+<td>Function to apply. Function must have input ibis.memtable and return ibis.memtable.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>args</td>
+<td>*args</td>
 <td>tuple</td>
-<td>arguments that will be passed to the function</td>
+<td>Arguments that will be passed to the function.</td>
 <td><code>()</code></td>
 </tr>
 <tr class="odd">
 <td>other_datasets</td>
 <td>list | None</td>
-<td>list of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=[‘cobe’, ‘bp’], then this needs to be the other datasets def pass_functions(initial_tbl: ibis.expr.types.Table, year: int, cobe: ibis.expr.types.Table, bp: ibis.expr.types.Table): return initial_tbl</td>
+<td>List of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=[‘cobe’, ‘bp’], then this needs to be the other datasets def pass_functions(initial_tbl: ibis.expr.types.Table, year: int, cobe: ibis.expr.types.Table, bp: ibis.expr.types.Table): return initial_tbl</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
-<td>kwargs</td>
+<td>**kwargs</td>
 <td>dict</td>
-<td>keyword-arguments that will be passed to the function</td>
+<td>Keyword-arguments that will be passed to the function.</td>
 <td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-1" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns:</h6>
-<p>‘ArrowWrangler’ (with updated dataframe property)</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>ArrowWrangler</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-1" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-1">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>import ibis from ibis import <em> from pins.data import mtcars mtcars_arrow = pa.table(mtcars) c = ArrowWrangler(mtcars_arrow) half_mpg = c.pipe_ibis(lambda d: d.mutate(half_mpg=</em>[‘mpg’] / 2)) half_mpg.dataframe.shape (32, 12)</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-2" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-2">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> ibis</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> ibis <span class="im">import</span> _</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pins.data <span class="im">import</span> mtcars</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mtcars_arrow <span class="op">=</span> pa.table(mtcars)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c <span class="op">=</span> ArrowWrangler(mtcars_arrow)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> half_mpg <span class="op">=</span> c.pipe_ibis(<span class="kw">lambda</span> d: d.mutate(half_mpg<span class="op">=</span>_[<span class="st">'mpg'</span>] <span class="op">/</span> <span class="dv">2</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> half_mpg.dataframe.shape</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>(<span class="dv">32</span>, <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_pandas" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_pandas">pipe_pandas</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_pandas(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_pandas(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    func,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>args,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Apply formula taking input pandas DataFrame and output pandas DataFrame.</p>
 <p>Automatically convert from pyararow before function, and back to pyarrow after function.</p>
 <section id="parameters-2" class="level6 doc-section doc-section-parameters">
@@ -464,52 +511,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>func</td>
 <td>callable</td>
-<td>function to apply. Function must input pd.DataFrame and return pd.DataFrame</td>
+<td>Function to apply. Function must input pd.DataFrame and return pd.DataFrame.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>args</td>
+<td>*args</td>
 <td>tuple</td>
-<td>arguments that will be passed to the function</td>
+<td>Arguments that will be passed to the function.</td>
 <td><code>()</code></td>
 </tr>
 <tr class="odd">
 <td>other_datasets</td>
 <td>list | None</td>
-<td>list of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=[‘cobe’, ‘bp’], then this needs to be the other datasets def pass_functions(initial_tbl: pd.DataFrame, year: int, cobe: pd.DataFrame, bp: pd.DataFrame): return initial_tbl</td>
+<td>List of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=[‘cobe’, ‘bp’], then this needs to be the other datasets def pass_functions(initial_tbl: pd.DataFrame, year: int, cobe: pd.DataFrame, bp: pd.DataFrame): return initial_tbl</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
-<td>kwargs</td>
+<td>**kwargs</td>
 <td>dict</td>
-<td>keyword-arguments that will be passed to the function</td>
+<td>Keyword-arguments that will be passed to the function.</td>
 <td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-2" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns:</h6>
-<p>‘ArrowWrangler’ (with updated dataframe property)</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>ArrowWrangler</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-2" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-2">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>from pins.data import mtcars mtcars_arrow = pa.table(mtcars) c = ArrowWrangler(mtcars_arrow) mpg_wt = c.pipe_pandas(lambda d: d.loc[:, [‘mpg’, ‘wt’]]) mpg_wt.dataframe.column_names [‘mpg’, ‘wt’] concat = mpg_wt.save_arrow_ifnew(‘mtcars_mpg_wt’).pipe_pandas( … lambda d, mtcars_mpg_wt: pd.concat([d, mtcars_mpg_wt]), other_datasets=[‘mtcars_mpg_wt’]) concat.dataframe.shape[0] == mtcars.shape[0] * 2 True</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-3" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-3">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pins.data <span class="im">import</span> mtcars</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mtcars_arrow <span class="op">=</span> pa.table(mtcars)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c <span class="op">=</span> ArrowWrangler(mtcars_arrow)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mpg_wt <span class="op">=</span> c.pipe_pandas(<span class="kw">lambda</span> d: d.loc[:, [<span class="st">'mpg'</span>, <span class="st">'wt'</span>]])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mpg_wt.dataframe.column_names</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>[<span class="st">'mpg'</span>, <span class="st">'wt'</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> concat <span class="op">=</span> mpg_wt.save_arrow_ifnew(<span class="st">'mtcars_mpg_wt'</span>).pipe_pandas(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>...     <span class="kw">lambda</span> d, mtcars_mpg_wt: pd.concat([d, mtcars_mpg_wt]), other_datasets<span class="op">=</span>[<span class="st">'mtcars_mpg_wt'</span>])</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> concat.dataframe.shape[<span class="dv">0</span>] <span class="op">==</span> mtcars.shape[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_sql" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.pipe_sql">pipe_sql</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_sql(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    sql_text,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    input_tbl_name<span class="op">=</span><span class="st">'me'</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.pipe_sql(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    sql_text,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    input_tbl_name<span class="op">=</span><span class="st">'me'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    other_datasets<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Apply formula using sql via duckdb (tsql dialect).</p>
 <p>Creates a view called ‘me’ to read sql from</p>
 <p>Automatically convert form pyararow before function, and back to pyarrow after function.</p>
@@ -532,59 +602,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>self</td>
-<td>ArrowWrangler</td>
-<td>object instance</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
 <td>sql_text</td>
 <td>str</td>
-<td>sql script to run</td>
+<td>SQL script to run.</td>
 <td><em>required</em></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>input_tbl_name</td>
 <td>str</td>
-<td>name to get table alias eg so you can use SELECT * FROM me</td>
+<td>Name to get table alias eg so you can use SELECT * FROM me. Defaults to ‘me’.</td>
 <td><code>'me'</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>other_datasets</td>
 <td>list | None</td>
-<td>list of strings defining the names of data pins to read from the board. This is used to create a duckdb view with that name to be able to query using sql</td>
+<td>List of strings defining the names of data pins to read from the board. This is used to create a duckdb view with that name to be able to query using sql.</td>
 <td><code>None</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-3" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns:</h6>
-<p>‘ArrowWrangler’ (with updated dataframe property)</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 18%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>ArrowWrangler</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-3" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-3">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>from pins.data import mtcars import pyarrow.compute as pc mtcars_arrow = pa.table(mtcars) c = ArrowWrangler(mtcars_arrow) cyl4 = c.pipe_sql(‘select * from me where cyl == 4’) pc.max(cyl4.dataframe[‘cyl’]) &lt;pyarrow.Int64Scalar: 4&gt; union = cyl4.save_arrow_ifnew(‘car_cyl4’).pipe_sql( … ‘select * from car_cyl4 union all select * from me’, other_datasets=[‘car_cyl4’]) union.dataframe.shape[0] == mtcars.query(‘cyl == 4’).shape[0] * 2 True</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-4" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-4">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pins.data <span class="im">import</span> mtcars</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> pyarrow.compute <span class="im">as</span> pc</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> mtcars_arrow <span class="op">=</span> pa.table(mtcars)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> c <span class="op">=</span> ArrowWrangler(mtcars_arrow)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> cyl4 <span class="op">=</span> c.pipe_sql(<span class="st">'select * from me where cyl == 4'</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> pc.<span class="bu">max</span>(cyl4.dataframe[<span class="st">'cyl'</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>pyarrow.Int64Scalar: <span class="dv">4</span><span class="op">&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> union <span class="op">=</span> cyl4.save_arrow_ifnew(<span class="st">'car_cyl4'</span>).pipe_sql(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>...  <span class="st">'select * from car_cyl4 union all select * from me'</span>, other_datasets<span class="op">=</span>[<span class="st">'car_cyl4'</span>])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> union.dataframe.shape[<span class="dv">0</span>] <span class="op">==</span> mtcars.query(<span class="st">'cyl == 4'</span>).shape[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.read_from_board" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.read_from_board">read_from_board</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.read_from_board(board, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.read_from_board(board, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Read from board and save it to the object instance’s dataframe property.</p>
 <section id="parameters-4" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h6>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 9%">
-<col style="width: 26%">
-<col style="width: 50%">
-<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 33%">
+<col style="width: 37%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -596,57 +684,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>cls</td>
-<td>'ArrowWrangler'</td>
-<td>class with board and dataframe properties</td>
+<td>board</td>
+<td>pins.boards.BaseBoard</td>
+<td>Pins board to read from.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>board</td>
-<td>pins.boards.BaseBoard</td>
-<td>pins board to read from</td>
-<td><em>required</em></td>
-</tr>
-<tr class="odd">
 <td>name</td>
 <td>str</td>
-<td>label for pin</td>
+<td>Label for pin.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-4" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns:</h6>
-<p>None</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 18%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>ArrowWrangler | None</td>
+<td>ArrowWrangler | None: ArrowWrangler instance with loaded dataframe, or None if pin not found.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-4" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-4">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>data = pd.DataFrame({‘a’: [1, 2], ‘b’: [3, 4]}) table = pa.Table.from_pandas(data) aw = ArrowWrangler(table) aw.board = pins.board_temp() _saved = aw.save_arrow_ifnew(name=‘simple’) new = ArrowWrangler.read_from_board(aw.board, ‘simple’) new.dataframe.equals(pa.Table.from_pydict({‘a’: [1, 2], ‘b’: [3, 4]})) True</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-5" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-5">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">'b'</span>: [<span class="dv">3</span>, <span class="dv">4</span>]})</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> table <span class="op">=</span> pa.Table.from_pandas(data)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw <span class="op">=</span> ArrowWrangler(table)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw.board <span class="op">=</span> pins.board_temp()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> _saved <span class="op">=</span> aw.save_arrow_ifnew(name<span class="op">=</span><span class="st">'simple'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> new <span class="op">=</span> ArrowWrangler.read_from_board(aw.board, <span class="st">'simple'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> new.dataframe.equals(pa.Table.from_pydict({<span class="st">'a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">'b'</span>: [<span class="dv">3</span>, <span class="dv">4</span>]}))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.read_from_sqlserver" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.read_from_sqlserver">read_from_sqlserver</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.read_from_sqlserver(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    hostname,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    database,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    filter_condition<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.read_from_sqlserver(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    hostname,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    database,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    filter_condition<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Read from sql server database and initialize new ArrowWrangler object.</p>
 <section id="parameters-5" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h6>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 14%">
 <col style="width: 67%">
-<col style="width: 8%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -660,49 +763,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>hostname</td>
 <td>str</td>
-<td></td>
+<td>String for connecting to mssql.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>cls</td>
-<td>ArrowWrangler</td>
-<td>class with board and dataframe properties</td>
+<td>database</td>
+<td>str</td>
+<td>Database.schema.table string.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td>database</td>
-<td>str</td>
-<td>bxs schema and table to read from</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
 <td>filter_condition</td>
-<td>str | callable</td>
-<td>either an sql filter condition or function to filter / manipulate using sql before saving arrow</td>
+<td>str | Callable | None</td>
+<td>Either an sql filter condition or function to filter/manipulate using sql before saving arrow. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-5" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns:</h6>
-<p>None</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ArrowWrangler</td>
+<td>ArrowWrangler</td>
+<td>ArrowWrangler instance with loaded data.</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.save_arrow_ifnew" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.save_arrow_ifnew">save_arrow_ifnew</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.save_arrow_ifnew(name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.save_arrow_ifnew(name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Save arrow table to a board if it is new file (different to latest board pin).</p>
 <p>Save to board property of object.</p>
 <section id="parameters-6" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h6>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 22%">
-<col style="width: 53%">
-<col style="width: 14%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -713,49 +824,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>self</td>
-<td>'ArrowWrangler'</td>
-<td>object with board and dataframe properties</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
 <td>name</td>
 <td>str</td>
-<td>label for pin</td>
+<td>Label for pin.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-6" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns:</h6>
-<p>None</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>None</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-5" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-5">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>data = pd.DataFrame({‘a’: [1, 2], ‘b’: [3, 4]}) table = pa.Table.from_pandas(data) aw = ArrowWrangler(table) aw.board = pins.board_temp() _saved = aw.save_arrow_ifnew(name=‘simple’) aw.board.pin_versions(‘simple’).count()==1 created True hash True version True dtype: bool</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-6" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-6">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">'b'</span>: [<span class="dv">3</span>, <span class="dv">4</span>]})</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> table <span class="op">=</span> pa.Table.from_pandas(data)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw <span class="op">=</span> ArrowWrangler(table)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw.board <span class="op">=</span> pins.board_temp()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> _saved <span class="op">=</span> aw.save_arrow_ifnew(name<span class="op">=</span><span class="st">'simple'</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw.board.pin_versions(<span class="st">'simple'</span>).count()<span class="op">==</span><span class="dv">1</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>created    <span class="va">True</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">hash</span>       <span class="va">True</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>version    <span class="va">True</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>dtype: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_manipulation.ArrowWrangler.save_excel" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_manipulation.ArrowWrangler.save_excel">save_excel</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.save_excel(name, sheet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_manipulation.ArrowWrangler.save_excel(name, sheet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Save arrow table to a board if it is new file (different to latest board pin).</p>
 <p>Save to board property of object.</p>
 <section id="parameters-7" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h6>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 22%">
-<col style="width: 53%">
-<col style="width: 14%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -766,33 +888,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>self</td>
-<td>'ArrowWrangler'</td>
-<td>object with board and dataframe properties</td>
+<td>name</td>
+<td>str</td>
+<td>Label for pin (and spreadsheet).</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>name</td>
+<td>sheet</td>
 <td>str</td>
-<td>label for pin (and spreadsheet)</td>
+<td>Name of the Excel sheet.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-7" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-7">Returns:</h6>
-<p>None</p>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-7">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>None</td>
+<td>ArrowWrangler instance with updated dataframe property.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="examples-6" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-6">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>data = pd.DataFrame({‘a’: [1, 2], ‘b’: [3, 4]}) table = pa.Table.from_pandas(data) aw = ArrowWrangler(table) aw.board = pins.board_temp() _save = aw.save_arrow_ifnew(name=‘simple’) aw.board.pin_versions(‘simple’).count()==1 created True hash True version True dtype: bool</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<section id="examples-7" class="level6 doc-section doc-section-examples">
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-7">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">'b'</span>: [<span class="dv">3</span>, <span class="dv">4</span>]})</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> table <span class="op">=</span> pa.Table.from_pandas(data)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw <span class="op">=</span> ArrowWrangler(table)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw.board <span class="op">=</span> pins.board_temp()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> _save <span class="op">=</span> aw.save_arrow_ifnew(name<span class="op">=</span><span class="st">'simple'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> aw.board.pin_versions(<span class="st">'simple'</span>).count()<span class="op">==</span><span class="dv">1</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>created    <span class="va">True</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">hash</span>       <span class="va">True</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>version    <span class="va">True</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>dtype: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

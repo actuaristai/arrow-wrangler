@@ -251,15 +251,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>checks</td>
 <td>list[pa.Check]</td>
-<td>list of pandera checks</td>
+<td>List of pandera checks.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns:</h4>
-<p>list[str] description of checks as strings</p>
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>list[str]</td>
+<td>list[str]: Description of checks as strings.</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="arrow_wrangler.data_validation.get_schema_description" class="level3">
@@ -272,8 +287,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <colgroup>
 <col style="width: 11%">
-<col style="width: 29%">
-<col style="width: 41%">
+<col style="width: 28%">
+<col style="width: 42%">
 <col style="width: 17%">
 </colgroup>
 <thead>
@@ -288,15 +303,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>schema</td>
 <td>pa.DataFrameSchema</td>
-<td>pandera schema to describe</td>
+<td>Pandera schema to describe.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-1" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns:</h4>
-<p>GT description of the pandera schema as a great_table</p>
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GT</td>
+<td>GT</td>
+<td>Description of the pandera schema as a great_table.</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="arrow_wrangler.data_validation.validate_table" class="level3">
@@ -308,8 +343,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 24%">
-<col style="width: 51%">
+<col style="width: 23%">
+<col style="width: 52%">
 <col style="width: 14%">
 </colgroup>
 <thead>
@@ -324,13 +359,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>table</td>
 <td>Table</td>
-<td>table to test</td>
+<td>Table to test.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
 <td>schema</td>
 <td>pa.DataFrameSchema</td>
-<td>schema that must be followed by the table</td>
+<td>Schema that must be followed by the table.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>

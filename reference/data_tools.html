@@ -272,33 +272,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>data_con</td>
 <td>Table</td>
-<td>Table with data to get levels from</td>
+<td>Table with data to get levels from.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns:</h6>
-<pre><code>ibis Table with columns:  level, count, percent, cum_perc,
-                            and column.</code></pre>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Table</td>
+<td>Table</td>
+<td>Ibis Table with columns: level, count, percent, cum_perc, and column.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="examples" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples:</h6>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>from arrow_wrangler.data_tools import DataTools data = {“A”: [1, 2, 1, 1, 2, 2], … “B”: [“a”, “b”, “a”, “a”, “b”, “c”]} result = (DataTools.get_all_levels(ibis.memtable(data)) … .mutate(percent=_[‘percent’].round(2))) result_df = pa.table({“level”: [“1”, “2”, “a”, “b”, “c”], … “count”: [3, 3, 3, 2, 1], … “variable”: [“A”, “A”, “B”, “B”, “B”], … “percent”: [0.5, 0.5, 0.5, 0.33, 0.17]}) result.to_pyarrow().equals(result_df) True</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h6>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> arrow_wrangler.data_tools <span class="im">import</span> DataTools</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> {<span class="st">"A"</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>...        <span class="st">"B"</span>: [<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>]}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> result <span class="op">=</span> (DataTools.get_all_levels(ibis.memtable(data))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>...     .mutate(percent<span class="op">=</span>_[<span class="st">'percent'</span>].<span class="bu">round</span>(<span class="dv">2</span>)))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> result_df <span class="op">=</span> pa.table({<span class="st">"level"</span>: [<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>...                          <span class="st">"count"</span>: [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>...                          <span class="st">"variable"</span>: [<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>...                          <span class="st">"percent"</span>: [<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.33</span>, <span class="fl">0.17</span>]})</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> result.to_pyarrow().equals(result_df)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="arrow_wrangler.data_tools.DataTools.read_big_parquet" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools.read_big_parquet">read_big_parquet</h5>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.read_big_parquet(parquet_location)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Read parquet file bigger than memory.</p>
-<p>This is for larger than memory dataset Uses arrows dataset object Note this is different from the pyarrow table object (as used above as default) which is using in-memory, so is faster Requires duckdb This is a bit slower than the in_memory approach (ibis.read_parquet) but scales to larger-than-memory datasets!</p>
+<p>This is for larger than memory dataset. Uses arrows dataset object. Note this is different from the pyarrow table object (as used above as default) Uses in-memory, so is faster. Requires duckdb. This is a bit slower than the in_memory approach (ibis.read_parquet) but scales to larger-than-memory datasets!</p>
 <section id="parameters-1" class="level6 doc-section doc-section-parameters">
 <h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h6>
 <table class="caption-top table">
@@ -314,33 +337,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>parquet_location</td>
 <td>Path</td>
-<td>path where parquet file is</td>
+<td>Path where parquet file is.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns-1" class="level6 doc-section doc-section-returns">
-<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns:</h6>
-<p>Table ibis Table object of parquet file</p>
-</section>
-<section id="examples-1" class="level6 doc-section doc-section-examples">
-<h6 class="doc-section doc-section-examples anchored" data-anchor-id="examples-1">Examples:</h6>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arrow_wrangler.data_tools <span class="im">import</span> DataTools</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>MEMBER_DATA <span class="op">=</span> <span class="st">'data/01_raw/member_data_20221231.parquet'</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DataTools()</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>big_data <span class="op">=</span> dt.read_big_parquet(parquet_location<span class="op">=</span>MEMBER_DATA)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>big_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h6>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Table</td>
+<td>Table</td>
+<td>Ibis Table object of parquet file.</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="arrow_wrangler.data_tools.DataTools.timing" class="level5">
 <h5 class="anchored" data-anchor-id="arrow_wrangler.data_tools.DataTools.timing">timing</h5>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.timing(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_tools.DataTools.timing(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use as a decorator to print function name and time runs (s) and shape.</p>
+<section id="parameters-2" class="level6 doc-section doc-section-parameters">
+<h6 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h6>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>Callable</td>
+<td>Function to decorate.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-2" class="level6 doc-section doc-section-returns">
+<h6 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h6>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Callable</td>
+<td>Callable</td>
+<td>Wrapped function that logs timing and shape information.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </section>
 </section>
