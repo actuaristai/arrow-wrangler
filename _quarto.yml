@@ -14,7 +14,7 @@ quartodoc:
 
   # write sidebar data to this file
   sidebar: docs/_sidebar.yml
-
+  parser: google
   sections:
     - title: API reference
       desc: Functions to inspect docstrings.

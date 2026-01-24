@@ -20,11 +20,17 @@ data_validation.extract_checks_description(checks)
 
 Return description of list of checks.
 
-Args:
-    checks (list[pa.Check]): List of pandera checks.
+#### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    list[str]: Description of checks as strings.
+| Name   | Type             | Description             | Default    |
+|--------|------------------|-------------------------|------------|
+| checks | list\[pa.Check\] | List of pandera checks. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type        | Description                                  |
+|--------|-------------|----------------------------------------------|
+|        | list\[str\] | list[str]: Description of checks as strings. |
 
 ### get_schema_description { #arrow_wrangler.data_validation.get_schema_description }
 
@@ -37,11 +43,17 @@ Generate table description from pandera schema.
 Some DataFrameSchema attributes are not described here (e.g. strict, ordered, unique).
 They could be added in the future.
 
-Args:
-    schema (pa.DataFrameSchema): Pandera schema to describe.
+#### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    GT: Description of the pandera schema as a great_table.
+| Name   | Type               | Description                 | Default    |
+|--------|--------------------|-----------------------------|------------|
+| schema | pa.DataFrameSchema | Pandera schema to describe. | _required_ |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                         |
+|--------|--------|-----------------------------------------------------|
+| GT     | GT     | Description of the pandera schema as a great_table. |
 
 ### validate_table { #arrow_wrangler.data_validation.validate_table }
 
@@ -51,6 +63,9 @@ data_validation.validate_table(table, schema)
 
 Check table against a pandera schema.
 
-Args:
-    table (Table): Table to test.
-    schema (pa.DataFrameSchema): Schema that must be followed by the table.
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type               | Description                                | Default    |
+|--------|--------------------|--------------------------------------------|------------|
+| table  | Table              | Table to test.                             | _required_ |
+| schema | pa.DataFrameSchema | Schema that must be followed by the table. | _required_ |

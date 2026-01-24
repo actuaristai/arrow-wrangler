@@ -22,11 +22,11 @@ class ArrowWrangler:
     """Data Munger using Arrow datasets.
 
     Examples:
-        from pins.data import mtcars
-        mtcars_arrow = pa.table(mtcars)
-        c = ArrowWrangler(mtcars_arrow)
-        c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe
-        c.pipe_pandas(lambda d: d.iloc[:, 1:2])
+        >>> from pins.data import mtcars
+        >>> mtcars_arrow = pa.table(mtcars)
+        >>> c = ArrowWrangler(mtcars_arrow)
+        >>> c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe
+        >>> c.pipe_pandas(lambda d: d.iloc[:, 1:2])
     """
 
     @classmethod
@@ -237,39 +237,31 @@ class ArrowWrangler:
 
         Automatically convert from pyararow before function, and back to pyarrow after function.
 
-        Parameters
-        ----------
-        func : callable
-            function to apply. Function must have input ibis.memtable and return ibis.memtable
-        args: tuple
-            arguments that will be passed to the function
-        other_datasets: list
-            list of strings defining the names of data pins to read from the board.
-            If this is used, the name of the string needs to be the name of the parameter that the function is passed
-            to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets
-            def pass_functions(initial_tbl: ibis.expr.types.Table,
-                               year: int,
-                               cobe: ibis.expr.types.Table,
-                               bp: ibis.expr.types.Table):
-                return initial_tbl
-        kwargs: dict
-            keyword-arguments that will be passed to the function
+        Args:
+            func: Function to apply. Function must have input ibis.memtable and return ibis.memtable.
+            *args: Arguments that will be passed to the function.
+            other_datasets: List of strings defining the names of data pins to read from the board.
+                If this is used, the name of the string needs to be the name of the parameter that the function is passed
+                to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets
+                def pass_functions(initial_tbl: ibis.expr.types.Table,
+                                   year: int,
+                                   cobe: ibis.expr.types.Table,
+                                   bp: ibis.expr.types.Table):
+                    return initial_tbl
+            **kwargs: Keyword-arguments that will be passed to the function.
 
         Returns:
-        -------
-        'ArrowWrangler' (with updated dataframe property)
-
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> import ibis
-        >>> from ibis import _
-        >>> from pins.data import mtcars
-        >>> mtcars_arrow = pa.table(mtcars)
-        >>> c = ArrowWrangler(mtcars_arrow)
-        >>> half_mpg = c.pipe_ibis(lambda d: d.mutate(half_mpg=_['mpg'] / 2))
-        >>> half_mpg.dataframe.shape
-        (32, 12)
+            >>> import ibis
+            >>> from ibis import _
+            >>> from pins.data import mtcars
+            >>> mtcars_arrow = pa.table(mtcars)
+            >>> c = ArrowWrangler(mtcars_arrow)
+            >>> half_mpg = c.pipe_ibis(lambda d: d.mutate(half_mpg=_['mpg'] / 2))
+            >>> half_mpg.dataframe.shape
+            (32, 12)
         """
         time_start = time()
 
@@ -330,41 +322,33 @@ class ArrowWrangler:
 
         Automatically convert from pyararow before function, and back to pyarrow after function.
 
-        Parameters
-        ----------
-        func : callable
-            function to apply. Function must input pd.DataFrame and return pd.DataFrame
-        args: tuple
-            arguments that will be passed to the function
-        other_datasets: list
-            list of strings defining the names of data pins to read from the board.
-            If this is used, the name of the string needs to be the name of the parameter that the function is passed
-            to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets
-            def pass_functions(initial_tbl: pd.DataFrame,
-                               year: int,
-                               cobe: pd.DataFrame,
-                               bp: pd.DataFrame):
-                return initial_tbl
-        kwargs: dict
-            keyword-arguments that will be passed to the function
+        Args:
+            func: Function to apply. Function must input pd.DataFrame and return pd.DataFrame.
+            *args: Arguments that will be passed to the function.
+            other_datasets: List of strings defining the names of data pins to read from the board.
+                If this is used, the name of the string needs to be the name of the parameter that the function is passed
+                to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets
+                def pass_functions(initial_tbl: pd.DataFrame,
+                                   year: int,
+                                   cobe: pd.DataFrame,
+                                   bp: pd.DataFrame):
+                    return initial_tbl
+            **kwargs: Keyword-arguments that will be passed to the function.
 
         Returns:
-        -------
-        'ArrowWrangler' (with updated dataframe property)
-
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> from pins.data import mtcars
-        >>> mtcars_arrow = pa.table(mtcars)
-        >>> c = ArrowWrangler(mtcars_arrow)
-        >>> mpg_wt = c.pipe_pandas(lambda d: d.loc[:, ['mpg', 'wt']])
-        >>> mpg_wt.dataframe.column_names
-        ['mpg', 'wt']
-        >>> concat = mpg_wt.save_arrow_ifnew('mtcars_mpg_wt').pipe_pandas(
-        ...     lambda d, mtcars_mpg_wt: pd.concat([d, mtcars_mpg_wt]), other_datasets=['mtcars_mpg_wt'])
-        >>> concat.dataframe.shape[0] == mtcars.shape[0] * 2
-        True
+            >>> from pins.data import mtcars
+            >>> mtcars_arrow = pa.table(mtcars)
+            >>> c = ArrowWrangler(mtcars_arrow)
+            >>> mpg_wt = c.pipe_pandas(lambda d: d.loc[:, ['mpg', 'wt']])
+            >>> mpg_wt.dataframe.column_names
+            ['mpg', 'wt']
+            >>> concat = mpg_wt.save_arrow_ifnew('mtcars_mpg_wt').pipe_pandas(
+            ...     lambda d, mtcars_mpg_wt: pd.concat([d, mtcars_mpg_wt]), other_datasets=['mtcars_mpg_wt'])
+            >>> concat.dataframe.shape[0] == mtcars.shape[0] * 2
+            True
         """
         time_start = time()
 
@@ -425,35 +409,27 @@ class ArrowWrangler:
 
         Automatically convert form pyararow before function, and back to pyarrow after function.
 
-        Parameters
-        ----------
-        self : ArrowWrangler
-            object instance
-        sql_text: str
-            sql script to run
-        input_tbl_name: str = 'me'
-            name to get table alias eg so you can use SELECT * FROM me
-        other_datasets: list
-            list of strings defining the names of data pins to read from the board.
-            This is used to create a duckdb view with that name to be able to query using sql
+        Args:
+            sql_text: SQL script to run.
+            input_tbl_name: Name to get table alias eg so you can use SELECT * FROM me. Defaults to 'me'.
+            other_datasets: List of strings defining the names of data pins to read from the board.
+                This is used to create a duckdb view with that name to be able to query using sql.
 
         Returns:
-        -------
-        'ArrowWrangler' (with updated dataframe property)
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> from pins.data import mtcars
-        >>> import pyarrow.compute as pc
-        >>> mtcars_arrow = pa.table(mtcars)
-        >>> c = ArrowWrangler(mtcars_arrow)
-        >>> cyl4 = c.pipe_sql('select * from me where cyl == 4')
-        >>> pc.max(cyl4.dataframe['cyl'])
-        <pyarrow.Int64Scalar: 4>
-        >>> union = cyl4.save_arrow_ifnew('car_cyl4').pipe_sql(
-        ...  'select * from car_cyl4 union all select * from me', other_datasets=['car_cyl4'])
-        >>> union.dataframe.shape[0] == mtcars.query('cyl == 4').shape[0] * 2
-        True
+            >>> from pins.data import mtcars
+            >>> import pyarrow.compute as pc
+            >>> mtcars_arrow = pa.table(mtcars)
+            >>> c = ArrowWrangler(mtcars_arrow)
+            >>> cyl4 = c.pipe_sql('select * from me where cyl == 4')
+            >>> pc.max(cyl4.dataframe['cyl'])
+            <pyarrow.Int64Scalar: 4>
+            >>> union = cyl4.save_arrow_ifnew('car_cyl4').pipe_sql(
+            ...  'select * from car_cyl4 union all select * from me', other_datasets=['car_cyl4'])
+            >>> union.dataframe.shape[0] == mtcars.query('cyl == 4').shape[0] * 2
+            True
         """
         time_start = time()
 
@@ -498,29 +474,23 @@ class ArrowWrangler:
 
         Save to board property of object.
 
-        Parameters
-        ----------
-        self : 'ArrowWrangler'
-            object with board and dataframe properties
-        name : str
-            label for pin
+        Args:
+            name: Label for pin.
 
         Returns:
-        -------
-        None
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
-        >>> table = pa.Table.from_pandas(data)
-        >>> aw = ArrowWrangler(table)
-        >>> aw.board = pins.board_temp()
-        >>> _saved = aw.save_arrow_ifnew(name='simple')
-        >>> aw.board.pin_versions('simple').count()==1
-        created    True
-        hash       True
-        version    True
-        dtype: bool
+            >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
+            >>> table = pa.Table.from_pandas(data)
+            >>> aw = ArrowWrangler(table)
+            >>> aw.board = pins.board_temp()
+            >>> _saved = aw.save_arrow_ifnew(name='simple')
+            >>> aw.board.pin_versions('simple').count()==1
+            created    True
+            hash       True
+            version    True
+            dtype: bool
         """
         if self.board.pin_exists(name):
             latest_pin = read_table(self.board.pin_download(name)[0])
@@ -543,29 +513,24 @@ class ArrowWrangler:
 
         Save to board property of object.
 
-        Parameters
-        ----------
-        self : 'ArrowWrangler'
-            object with board and dataframe properties
-        name : str
-            label for pin (and spreadsheet)
+        Args:
+            name: Label for pin (and spreadsheet).
+            sheet: Name of the Excel sheet.
 
         Returns:
-        -------
-        None
+            ArrowWrangler instance with updated dataframe property.
 
         Examples:
-        --------
-        >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
-        >>> table = pa.Table.from_pandas(data)
-        >>> aw = ArrowWrangler(table)
-        >>> aw.board = pins.board_temp()
-        >>> _save = aw.save_arrow_ifnew(name='simple')
-        >>> aw.board.pin_versions('simple').count()==1
-        created    True
-        hash       True
-        version    True
-        dtype: bool
+            >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
+            >>> table = pa.Table.from_pandas(data)
+            >>> aw = ArrowWrangler(table)
+            >>> aw.board = pins.board_temp()
+            >>> _save = aw.save_arrow_ifnew(name='simple')
+            >>> aw.board.pin_versions('simple').count()==1
+            created    True
+            hash       True
+            version    True
+            dtype: bool
         """
         if self.board.pin_exists(name):
             latest_pandas = pd.read_excel(self.board.pin_download(name)[0], skiprows=1)

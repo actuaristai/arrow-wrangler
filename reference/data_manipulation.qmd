@@ -18,12 +18,15 @@ data_manipulation.ArrowWrangler(start_arrow, board=None)
 
 Data Munger using Arrow datasets.
 
-Examples:
-    from pins.data import mtcars
-    mtcars_arrow = pa.table(mtcars)
-    c = ArrowWrangler(mtcars_arrow)
-    c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe
-    c.pipe_pandas(lambda d: d.iloc[:, 1:2])
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> from pins.data import mtcars
+>>> mtcars_arrow = pa.table(mtcars)
+>>> c = ArrowWrangler(mtcars_arrow)
+>>> c.pipe_ibis(lambda d: d.mutate(x=1)).dataframe
+>>> c.pipe_pandas(lambda d: d.iloc[:, 1:2])
+```
 
 #### Attributes
 
@@ -58,23 +61,31 @@ data_manipulation.ArrowWrangler.pipe_arrow(
 
 Apply a function to the ArrowWrangler object in a chain-able manner.
 
-Args:
-    func: Function to apply. Must have input pa.Table and return pa.Table.
-    *args: Arguments that will be passed to the function.
-    other_datasets: List of strings defining the names of data pins to read.
-        The string names must match the function parameter names.
-    **kwargs: Keyword-arguments that will be passed to the function.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    ArrowWrangler instance with updated dataframe property.
+| Name           | Type         | Description                                                                                                        | Default    |
+|----------------|--------------|--------------------------------------------------------------------------------------------------------------------|------------|
+| func           | callable     | Function to apply. Must have input pa.Table and return pa.Table.                                                   | _required_ |
+| *args          | tuple        | Arguments that will be passed to the function.                                                                     | `()`       |
+| other_datasets | list \| None | List of strings defining the names of data pins to read. The string names must match the function parameter names. | `None`     |
+| **kwargs       | dict         | Keyword-arguments that will be passed to the function.                                                             | `{}`       |
 
-Examples:
-    >>> from pins.data import mtcars
-    >>> mtcars_arrow = pa.table(mtcars)
-    >>> c = ArrowWrangler(mtcars_arrow)
-    >>> mpg_cyl = c.pipe_arrow(lambda d: d.select(['cyl', 'mpg']))
-    >>> mpg_cyl.dataframe.shape
-    (32, 2)
+###### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type          | Description                                             |
+|--------|---------------|---------------------------------------------------------|
+|        | ArrowWrangler | ArrowWrangler instance with updated dataframe property. |
+
+###### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> from pins.data import mtcars
+>>> mtcars_arrow = pa.table(mtcars)
+>>> c = ArrowWrangler(mtcars_arrow)
+>>> mpg_cyl = c.pipe_arrow(lambda d: d.select(['cyl', 'mpg']))
+>>> mpg_cyl.dataframe.shape
+(32, 2)
+```
 
 ##### pipe_ibis { #arrow_wrangler.data_manipulation.ArrowWrangler.pipe_ibis }
 
@@ -95,17 +106,20 @@ Automatically convert from pyararow before function, and back to pyarrow after f
 
 | Name           | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default    |
 |----------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| func           | callable     | function to apply. Function must have input ibis.memtable and return ibis.memtable                                                                                                                                                                                                                                                                                                                                                                                                            | _required_ |
-| args           | tuple        | arguments that will be passed to the function                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `()`       |
-| other_datasets | list \| None | list of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets def pass_functions(initial_tbl: ibis.expr.types.Table,                    year: int,                    cobe: ibis.expr.types.Table,                    bp: ibis.expr.types.Table):     return initial_tbl | `None`     |
-| kwargs         | dict         | keyword-arguments that will be passed to the function                                                                                                                                                                                                                                                                                                                                                                                                                                         | `{}`       |
+| func           | callable     | Function to apply. Function must have input ibis.memtable and return ibis.memtable.                                                                                                                                                                                                                                                                                                                                                                                                           | _required_ |
+| *args          | tuple        | Arguments that will be passed to the function.                                                                                                                                                                                                                                                                                                                                                                                                                                                | `()`       |
+| other_datasets | list \| None | List of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets def pass_functions(initial_tbl: ibis.expr.types.Table,                    year: int,                    cobe: ibis.expr.types.Table,                    bp: ibis.expr.types.Table):     return initial_tbl | `None`     |
+| **kwargs       | dict         | Keyword-arguments that will be passed to the function.                                                                                                                                                                                                                                                                                                                                                                                                                                        | `{}`       |
 
-###### Returns: {.doc-section .doc-section-returns}
+###### Returns {.doc-section .doc-section-returns}
 
-'ArrowWrangler' (with updated dataframe property)
+| Name   | Type          | Description                                             |
+|--------|---------------|---------------------------------------------------------|
+|        | ArrowWrangler | ArrowWrangler instance with updated dataframe property. |
 
-###### Examples: {.doc-section .doc-section-examples}
+###### Examples {.doc-section .doc-section-examples}
 
+```python
 >>> import ibis
 >>> from ibis import _
 >>> from pins.data import mtcars
@@ -114,6 +128,7 @@ Automatically convert from pyararow before function, and back to pyarrow after f
 >>> half_mpg = c.pipe_ibis(lambda d: d.mutate(half_mpg=_['mpg'] / 2))
 >>> half_mpg.dataframe.shape
 (32, 12)
+```
 
 ##### pipe_pandas { #arrow_wrangler.data_manipulation.ArrowWrangler.pipe_pandas }
 
@@ -134,17 +149,20 @@ Automatically convert from pyararow before function, and back to pyarrow after f
 
 | Name           | Type         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Default    |
 |----------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| func           | callable     | function to apply. Function must input pd.DataFrame and return pd.DataFrame                                                                                                                                                                                                                                                                                                                                                                                        | _required_ |
-| args           | tuple        | arguments that will be passed to the function                                                                                                                                                                                                                                                                                                                                                                                                                      | `()`       |
-| other_datasets | list \| None | list of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets def pass_functions(initial_tbl: pd.DataFrame,                    year: int,                    cobe: pd.DataFrame,                    bp: pd.DataFrame):     return initial_tbl | `None`     |
-| kwargs         | dict         | keyword-arguments that will be passed to the function                                                                                                                                                                                                                                                                                                                                                                                                              | `{}`       |
+| func           | callable     | Function to apply. Function must input pd.DataFrame and return pd.DataFrame.                                                                                                                                                                                                                                                                                                                                                                                       | _required_ |
+| *args          | tuple        | Arguments that will be passed to the function.                                                                                                                                                                                                                                                                                                                                                                                                                     | `()`       |
+| other_datasets | list \| None | List of strings defining the names of data pins to read from the board. If this is used, the name of the string needs to be the name of the parameter that the function is passed to. eg if pipe_arrow has other_datasets=['cobe', 'bp'], then this needs to be the other datasets def pass_functions(initial_tbl: pd.DataFrame,                    year: int,                    cobe: pd.DataFrame,                    bp: pd.DataFrame):     return initial_tbl | `None`     |
+| **kwargs       | dict         | Keyword-arguments that will be passed to the function.                                                                                                                                                                                                                                                                                                                                                                                                             | `{}`       |
 
-###### Returns: {.doc-section .doc-section-returns}
+###### Returns {.doc-section .doc-section-returns}
 
-'ArrowWrangler' (with updated dataframe property)
+| Name   | Type          | Description                                             |
+|--------|---------------|---------------------------------------------------------|
+|        | ArrowWrangler | ArrowWrangler instance with updated dataframe property. |
 
-###### Examples: {.doc-section .doc-section-examples}
+###### Examples {.doc-section .doc-section-examples}
 
+```python
 >>> from pins.data import mtcars
 >>> mtcars_arrow = pa.table(mtcars)
 >>> c = ArrowWrangler(mtcars_arrow)
@@ -155,6 +173,7 @@ Automatically convert from pyararow before function, and back to pyarrow after f
 ...     lambda d, mtcars_mpg_wt: pd.concat([d, mtcars_mpg_wt]), other_datasets=['mtcars_mpg_wt'])
 >>> concat.dataframe.shape[0] == mtcars.shape[0] * 2
 True
+```
 
 ##### pipe_sql { #arrow_wrangler.data_manipulation.ArrowWrangler.pipe_sql }
 
@@ -174,19 +193,21 @@ Automatically convert form pyararow before function, and back to pyarrow after f
 
 ###### Parameters {.doc-section .doc-section-parameters}
 
-| Name           | Type          | Description                                                                                                                                               | Default    |
-|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| self           | ArrowWrangler | object instance                                                                                                                                           | _required_ |
-| sql_text       | str           | sql script to run                                                                                                                                         | _required_ |
-| input_tbl_name | str           | name to get table alias eg so you can use SELECT * FROM me                                                                                                | `'me'`     |
-| other_datasets | list \| None  | list of strings defining the names of data pins to read from the board. This is used to create a duckdb view with that name to be able to query using sql | `None`     |
+| Name           | Type         | Description                                                                                                                                                | Default    |
+|----------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| sql_text       | str          | SQL script to run.                                                                                                                                         | _required_ |
+| input_tbl_name | str          | Name to get table alias eg so you can use SELECT * FROM me. Defaults to 'me'.                                                                              | `'me'`     |
+| other_datasets | list \| None | List of strings defining the names of data pins to read from the board. This is used to create a duckdb view with that name to be able to query using sql. | `None`     |
 
-###### Returns: {.doc-section .doc-section-returns}
+###### Returns {.doc-section .doc-section-returns}
 
-'ArrowWrangler' (with updated dataframe property)
+| Name   | Type          | Description                                             |
+|--------|---------------|---------------------------------------------------------|
+|        | ArrowWrangler | ArrowWrangler instance with updated dataframe property. |
 
-###### Examples: {.doc-section .doc-section-examples}
+###### Examples {.doc-section .doc-section-examples}
 
+```python
 >>> from pins.data import mtcars
 >>> import pyarrow.compute as pc
 >>> mtcars_arrow = pa.table(mtcars)
@@ -198,6 +219,7 @@ Automatically convert form pyararow before function, and back to pyarrow after f
 ...  'select * from car_cyl4 union all select * from me', other_datasets=['car_cyl4'])
 >>> union.dataframe.shape[0] == mtcars.query('cyl == 4').shape[0] * 2
 True
+```
 
 ##### read_from_board { #arrow_wrangler.data_manipulation.ArrowWrangler.read_from_board }
 
@@ -207,22 +229,31 @@ data_manipulation.ArrowWrangler.read_from_board(board, name)
 
 Read from board and save it to the object instance's dataframe property.
 
-Args:
-    board (pins.boards.BaseBoard): Pins board to read from.
-    name (str): Label for pin.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    ArrowWrangler | None: ArrowWrangler instance with loaded dataframe, or None if pin not found.
+| Name   | Type                  | Description              | Default    |
+|--------|-----------------------|--------------------------|------------|
+| board  | pins.boards.BaseBoard | Pins board to read from. | _required_ |
+| name   | str                   | Label for pin.           | _required_ |
 
-Examples:
-    >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
-    >>> table = pa.Table.from_pandas(data)
-    >>> aw = ArrowWrangler(table)
-    >>> aw.board = pins.board_temp()
-    >>> _saved = aw.save_arrow_ifnew(name='simple')
-    >>> new = ArrowWrangler.read_from_board(aw.board, 'simple')
-    >>> new.dataframe.equals(pa.Table.from_pydict({'a': [1, 2], 'b': [3, 4]}))
-    True
+###### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type                  | Description                                                                                    |
+|--------|-----------------------|------------------------------------------------------------------------------------------------|
+|        | ArrowWrangler \| None | ArrowWrangler \| None: ArrowWrangler instance with loaded dataframe, or None if pin not found. |
+
+###### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
+>>> table = pa.Table.from_pandas(data)
+>>> aw = ArrowWrangler(table)
+>>> aw.board = pins.board_temp()
+>>> _saved = aw.save_arrow_ifnew(name='simple')
+>>> new = ArrowWrangler.read_from_board(aw.board, 'simple')
+>>> new.dataframe.equals(pa.Table.from_pydict({'a': [1, 2], 'b': [3, 4]}))
+True
+```
 
 ##### read_from_sqlserver { #arrow_wrangler.data_manipulation.ArrowWrangler.read_from_sqlserver }
 
@@ -236,14 +267,19 @@ data_manipulation.ArrowWrangler.read_from_sqlserver(
 
 Read from sql server database and initialize new ArrowWrangler object.
 
-Args:
-    hostname (str): String for connecting to mssql.
-    database (str): Database.schema.table string.
-    filter_condition (str | Callable | None, optional): Either an sql filter condition
-        or function to filter/manipulate using sql before saving arrow. Defaults to None.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    ArrowWrangler: ArrowWrangler instance with loaded data.
+| Name             | Type                    | Description                                                                                                      | Default    |
+|------------------|-------------------------|------------------------------------------------------------------------------------------------------------------|------------|
+| hostname         | str                     | String for connecting to mssql.                                                                                  | _required_ |
+| database         | str                     | Database.schema.table string.                                                                                    | _required_ |
+| filter_condition | str \| Callable \| None | Either an sql filter condition or function to filter/manipulate using sql before saving arrow. Defaults to None. | `None`     |
+
+###### Returns {.doc-section .doc-section-returns}
+
+| Name          | Type          | Description                              |
+|---------------|---------------|------------------------------------------|
+| ArrowWrangler | ArrowWrangler | ArrowWrangler instance with loaded data. |
 
 ##### save_arrow_ifnew { #arrow_wrangler.data_manipulation.ArrowWrangler.save_arrow_ifnew }
 
@@ -257,17 +293,19 @@ Save to board property of object.
 
 ###### Parameters {.doc-section .doc-section-parameters}
 
-| Name   | Type              | Description                                | Default    |
-|--------|-------------------|--------------------------------------------|------------|
-| self   | \'ArrowWrangler\' | object with board and dataframe properties | _required_ |
-| name   | str               | label for pin                              | _required_ |
+| Name   | Type   | Description    | Default    |
+|--------|--------|----------------|------------|
+| name   | str    | Label for pin. | _required_ |
 
-###### Returns: {.doc-section .doc-section-returns}
+###### Returns {.doc-section .doc-section-returns}
 
-None
+| Name   | Type   | Description                                             |
+|--------|--------|---------------------------------------------------------|
+|        | None   | ArrowWrangler instance with updated dataframe property. |
 
-###### Examples: {.doc-section .doc-section-examples}
+###### Examples {.doc-section .doc-section-examples}
 
+```python
 >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
 >>> table = pa.Table.from_pandas(data)
 >>> aw = ArrowWrangler(table)
@@ -278,6 +316,7 @@ created    True
 hash       True
 version    True
 dtype: bool
+```
 
 ##### save_excel { #arrow_wrangler.data_manipulation.ArrowWrangler.save_excel }
 
@@ -291,17 +330,20 @@ Save to board property of object.
 
 ###### Parameters {.doc-section .doc-section-parameters}
 
-| Name   | Type              | Description                                | Default    |
-|--------|-------------------|--------------------------------------------|------------|
-| self   | \'ArrowWrangler\' | object with board and dataframe properties | _required_ |
-| name   | str               | label for pin (and spreadsheet)            | _required_ |
+| Name   | Type   | Description                      | Default    |
+|--------|--------|----------------------------------|------------|
+| name   | str    | Label for pin (and spreadsheet). | _required_ |
+| sheet  | str    | Name of the Excel sheet.         | _required_ |
 
-###### Returns: {.doc-section .doc-section-returns}
+###### Returns {.doc-section .doc-section-returns}
 
-None
+| Name   | Type   | Description                                             |
+|--------|--------|---------------------------------------------------------|
+|        | None   | ArrowWrangler instance with updated dataframe property. |
 
-###### Examples: {.doc-section .doc-section-examples}
+###### Examples {.doc-section .doc-section-examples}
 
+```python
 >>> data = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
 >>> table = pa.Table.from_pandas(data)
 >>> aw = ArrowWrangler(table)
@@ -312,3 +354,4 @@ created    True
 hash       True
 version    True
 dtype: bool
+```

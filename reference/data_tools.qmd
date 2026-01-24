@@ -37,24 +37,33 @@ Value Counts summary.
 For all the variables in the DataFrame, run value_counts with count and
 percentages and then stack them up into one DataFrame.
 
-Args:
-    data_con (Table): Table with data to get levels from.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    Table: Ibis Table with columns: level, count, percent, cum_perc, and column.
+| Name     | Type   | Description                         | Default    |
+|----------|--------|-------------------------------------|------------|
+| data_con | Table  | Table with data to get levels from. | _required_ |
 
-Examples:
-    >>> from arrow_wrangler.data_tools import DataTools
-    >>> data = {"A": [1, 2, 1, 1, 2, 2],
-    ...        "B": ["a", "b", "a", "a", "b", "c"]}
-    >>> result = (DataTools.get_all_levels(ibis.memtable(data))
-    ...     .mutate(percent=_['percent'].round(2)))
-    >>> result_df = pa.table({"level": ["1", "2", "a", "b", "c"],
-    ...                          "count": [3, 3, 3, 2, 1],
-    ...                          "variable": ["A", "A", "B", "B", "B"],
-    ...                          "percent": [0.5, 0.5, 0.5, 0.33, 0.17]})
-    >>> result.to_pyarrow().equals(result_df)
-    True
+###### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                           |
+|--------|--------|-----------------------------------------------------------------------|
+| Table  | Table  | Ibis Table with columns: level, count, percent, cum_perc, and column. |
+
+###### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> from arrow_wrangler.data_tools import DataTools
+>>> data = {"A": [1, 2, 1, 1, 2, 2],
+...        "B": ["a", "b", "a", "a", "b", "c"]}
+>>> result = (DataTools.get_all_levels(ibis.memtable(data))
+...     .mutate(percent=_['percent'].round(2)))
+>>> result_df = pa.table({"level": ["1", "2", "a", "b", "c"],
+...                          "count": [3, 3, 3, 2, 1],
+...                          "variable": ["A", "A", "B", "B", "B"],
+...                          "percent": [0.5, 0.5, 0.5, 0.33, 0.17]})
+>>> result.to_pyarrow().equals(result_df)
+True
+```
 
 ##### read_big_parquet { #arrow_wrangler.data_tools.DataTools.read_big_parquet }
 
@@ -70,11 +79,17 @@ Uses in-memory, so is faster. Requires duckdb.
 This is a bit slower than the in_memory approach (ibis.read_parquet)
 but scales to larger-than-memory datasets!
 
-Args:
-    parquet_location (Path): Path where parquet file is.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    Table: Ibis Table object of parquet file.
+| Name             | Type   | Description                 | Default    |
+|------------------|--------|-----------------------------|------------|
+| parquet_location | Path   | Path where parquet file is. | _required_ |
+
+###### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                        |
+|--------|--------|------------------------------------|
+| Table  | Table  | Ibis Table object of parquet file. |
 
 ##### timing { #arrow_wrangler.data_tools.DataTools.timing }
 
@@ -84,8 +99,14 @@ data_tools.DataTools.timing(f)
 
 Use as a decorator to print function name and time runs (s) and shape.
 
-Args:
-    f (Callable): Function to decorate.
+###### Parameters {.doc-section .doc-section-parameters}
 
-Returns:
-    Callable: Wrapped function that logs timing and shape information.
+| Name   | Type     | Description           | Default    |
+|--------|----------|-----------------------|------------|
+| f      | Callable | Function to decorate. | _required_ |
+
+###### Returns {.doc-section .doc-section-returns}
+
+| Name     | Type     | Description                                              |
+|----------|----------|----------------------------------------------------------|
+| Callable | Callable | Wrapped function that logs timing and shape information. |
